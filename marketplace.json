@@ -1,0 +1,13 @@
+{
+  "name": "ORC",
+  "description": "Multi-Agent Orchestration System for Claude Code",
+  "plugins": [
+    {
+      "name": "orc",
+      "displayName": "ORC - Multi-Agent Orchestration System",
+      "version": "1.0.0",
+      "description": "Autonomous multi-agent system that transforms goals into tested implementations through Epic/Feature/Story hierarchy with quality gates",
+      "path": ".claude-plugin"
+    }
+  ]
+}
