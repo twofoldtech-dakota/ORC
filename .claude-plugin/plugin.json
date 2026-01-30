@@ -1,0 +1,18 @@
+{
+  "name": "orc",
+  "description": "Autonomous multi-agent system that transforms goals into tested implementations through Epic/Feature/Story hierarchy with quality gates",
+  "version": "1.0.0",
+  "author": {
+    "name": "Dakota Smith"
+  },
+  "repository": "https://github.com/twofoldtech-dakota/ORC",
+  "license": "MIT",
+  "keywords": [
+    "orchestration",
+    "multi-agent",
+    "autonomous",
+    "code-generation",
+    "planning",
+    "implementation"
+  ]
+}

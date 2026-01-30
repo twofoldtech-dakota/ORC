@@ -1,36 +1,17 @@
 {
-  "name": "ORC",
-  "description": "Multi-Agent Orchestration System for Claude Code",
+  "name": "orc-marketplace",
+  "owner": {
+    "name": "Dakota Smith",
+    "email": "dakota@twofoldtech.com"
+  },
+  "metadata": {
+    "description": "Multi-Agent Orchestration System for Claude Code"
+  },
   "plugins": [
     {
       "name": "orc",
-      "displayName": "ORC - Multi-Agent Orchestration System",
-      "version": "1.0.0",
-      "description": "Autonomous multi-agent system that transforms goals into tested implementations through Epic/Feature/Story hierarchy with quality gates",
-      "author": {
-        "name": "Dakota Smith"
-      },
-      "repository": "https://github.com/twofoldtech-dakota/ORC",
-      "license": "MIT",
-      "keywords": [
-        "orchestration",
-        "multi-agent",
-        "autonomous",
-        "code-generation",
-        "planning",
-        "implementation"
-      ],
-      "path": ".",
-      "skills": [
-        "skills/orc/SKILL.md"
-      ],
-      "agents": [
-        "agents/*.md"
-      ],
-      "commands": [
-        "commands/*.md"
-      ],
-      "hooks": "hooks/hooks.json"
+      "source": ".",
+      "description": "Autonomous multi-agent system that transforms goals into tested implementations through Epic/Feature/Story hierarchy with quality gates"
     }
   ]
 }

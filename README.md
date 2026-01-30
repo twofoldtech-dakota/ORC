@@ -58,7 +58,7 @@ Start Claude Code and run these commands:
 /plugin marketplace add twofoldtech-dakota/ORC
 
 # Install the plugin
-/plugin install orc@ORC
+/plugin install orc@orc-marketplace
 ```
 
 Or use interactive discovery:
@@ -83,10 +83,10 @@ Run /orc plan <goal> to start.
 
 ```bash
 # Update the marketplace
-/plugin marketplace update ORC
+/plugin marketplace update orc-marketplace
 
 # Uninstall
-/plugin uninstall orc
+/plugin uninstall orc@orc-marketplace
 ```
 
 ---
