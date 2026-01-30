@@ -16,7 +16,7 @@ The Orchestrator is the central coordination agent responsible for state managem
 
 ```json
 {
-  "$ref": ".claude-plugin/contracts/plan.schema.json",
+  "$ref": "contracts/plan.schema.json",
   "command": {
     "type": "string",
     "enum": ["analyze", "plan", "run", "next", "resume", "stop", "retry", "learn", "status", "clear"]

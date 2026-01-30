@@ -402,23 +402,23 @@ confidence = base_confidence × recency_factor × success_factor
 
 ```
 ORC/
-├── .claude-plugin/              # Claude Code plugin package
-│   ├── marketplace.json         # Marketplace catalog
-│   ├── plugin.json              # Plugin manifest
-│   ├── skills/orc/SKILL.md      # Skill definition
-│   ├── agents/                  # Agent definitions (19 files)
-│   ├── commands/                # Command definitions (13 files)
-│   ├── hooks/hooks.json         # Lifecycle hooks
-│   ├── contracts/               # JSON Schema definitions
-│   │   ├── epic.schema.json
-│   │   ├── story.schema.json
-│   │   └── ...
-│   ├── patterns/                # Implementation patterns
-│   │   ├── frontend/
-│   │   ├── api/
-│   │   ├── auth/
-│   │   └── database/
-│   └── docs/                    # Documentation
+├── .claude-plugin/
+│   └── marketplace.json         # Marketplace catalog
+├── plugins/
+│   └── orc/                     # ORC plugin
+│       ├── .claude-plugin/
+│       │   └── plugin.json      # Plugin manifest
+│       ├── skills/orc/SKILL.md  # Skill definition
+│       ├── agents/              # Agent definitions (19 files)
+│       ├── commands/            # Command definitions (13 files)
+│       ├── hooks/hooks.json     # Lifecycle hooks
+│       ├── contracts/           # JSON Schema definitions
+│       ├── patterns/            # Implementation patterns
+│       │   ├── frontend/
+│       │   ├── api/
+│       │   ├── auth/
+│       │   └── database/
+│       └── docs/                # Documentation
 │
 └── master-config.json           # Quality rules & thresholds
 ```
@@ -457,10 +457,10 @@ ORC/
 
 | Document | Description |
 |----------|-------------|
-| [Architecture](.claude-plugin/docs/ARCHITECTURE.md) | Deep dive into agent system |
-| [Commands](.claude-plugin/docs/COMMANDS.md) | Complete command reference |
-| [Pattern Library](.claude-plugin/docs/PATTERN-LIBRARY.md) | Available implementation patterns |
-| [Creating Specialists](.claude-plugin/docs/CREATING-SPECIALISTS.md) | Guide to adding new agents |
+| [Architecture](plugins/orc/docs/ARCHITECTURE.md) | Deep dive into agent system |
+| [Commands](plugins/orc/docs/COMMANDS.md) | Complete command reference |
+| [Pattern Library](plugins/orc/docs/PATTERN-LIBRARY.md) | Available implementation patterns |
+| [Creating Specialists](plugins/orc/docs/CREATING-SPECIALISTS.md) | Guide to adding new agents |
 
 ---
 
@@ -470,7 +470,7 @@ ORC/
 
 ```bash
 # Create new pattern
-.claude-plugin/patterns/{category}/{pattern-name}.md
+plugins/orc/patterns/{category}/{pattern-name}.md
 
 # Include:
 # - Reference sources
@@ -483,7 +483,7 @@ ORC/
 
 ```bash
 # Create new specialist
-.claude-plugin/agents/{specialist-name}.md
+plugins/orc/agents/{specialist-name}.md
 
 # Required frontmatter:
 # ---

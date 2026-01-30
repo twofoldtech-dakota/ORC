@@ -437,11 +437,11 @@ After completing implementation, document in `.orc/design/innovation/{story-id}.
 ## Reference Resources
 
 Always consult these before implementation:
-- `.claude-plugin/patterns/frontend/_references/` - Reference patterns from Linear, Remotion, Vercel, Stripe
-- `.claude-plugin/patterns/frontend/components/` - Component patterns with examples
-- `.claude-plugin/patterns/frontend/interactions/` - Interaction patterns (hover, transitions)
-- `.claude-plugin/contracts/design-system.schema.json` - Design system constraints
-- `.claude-plugin/contracts/interaction-requirements.schema.json` - Required interaction states
+- `patterns/frontend/_references/` - Reference patterns from Linear, Remotion, Vercel, Stripe
+- `patterns/frontend/components/` - Component patterns with examples
+- `patterns/frontend/interactions/` - Interaction patterns (hover, transitions)
+- `contracts/design-system.schema.json` - Design system constraints
+- `contracts/interaction-requirements.schema.json` - Required interaction states
 
 ## Final Notes
 

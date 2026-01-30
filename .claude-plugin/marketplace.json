@@ -5,12 +5,13 @@
     "email": "dakota@twofoldtech.com"
   },
   "metadata": {
-    "description": "Multi-Agent Orchestration System for Claude Code"
+    "description": "Multi-Agent Orchestration System for Claude Code",
+    "pluginRoot": "./plugins"
   },
   "plugins": [
     {
       "name": "orc",
-      "source": ".",
+      "source": "./plugins/orc",
       "description": "Autonomous multi-agent system that transforms goals into tested implementations through Epic/Feature/Story hierarchy with quality gates"
     }
   ]

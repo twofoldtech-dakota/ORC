@@ -7,7 +7,7 @@ Refactor ORC to be a fully Claude Code marketplace-compliant plugin while preser
 
 | Category | Current | Issue |
 |----------|---------|-------|
-| **Manifest** | 4/10 | `plugin.json` in root (should be `.claude-plugin/plugin.json`) |
+| **Manifest** | 4/10 | `plugin.json` in root (should be `plugins/orc/plugin.json`) |
 | **Skills** | 5/10 | Uses custom `<orc>` tag, not standard frontmatter |
 | **Hooks** | 3/10 | Custom events (story_complete) vs Claude Code events |
 | **Commands** | 7/10 | Missing frontmatter fields (description, argument-hint, allowed-tools) |
@@ -29,7 +29,7 @@ Refactor ORC to be a fully Claude Code marketplace-compliant plugin while preser
 
 ```
 ORC/
-├── .claude-plugin/
+├── plugins/orc/
 │   └── plugin.json           # NEW: Standard manifest (only file here)
 ├── agents/                   # FLATTEN: Remove core/specialists nesting
 │   ├── orchestrator.md
@@ -47,8 +47,8 @@ ORC/
 │   ├── analyze.md
 │   ├── plan.md
 │   ├── ... (13 total)
-├── .claude-plugin/contracts/                # UNCHANGED
-├── .claude-plugin/patterns/                 # UNCHANGED
+├── plugins/orc/contracts/                # UNCHANGED
+├── plugins/orc/patterns/                 # UNCHANGED
 ├── docs/                     # UNCHANGED
 ├── hooks/
 │   ├── hooks.json            # UPDATE: Add Claude Code events
@@ -61,7 +61,7 @@ ORC/
 └── .orc/                     # Runtime (gitignored) - UNCHANGED
 ```
 
-**Key insight:** The entire repo gets installed as the plugin. `.claude-plugin/` only contains the manifest.
+**Key insight:** The entire repo gets installed as the plugin. `plugins/orc/` only contains the manifest.
 
 ---
 
@@ -75,7 +75,7 @@ mkdir -p .claude-plugin
 
 ### Phase 2: Create Standard Manifest
 
-**File:** `.claude-plugin/plugin.json`
+**File:** `plugins/orc/plugin.json`
 
 ```json
 {
@@ -189,7 +189,7 @@ spawned_by: [implementer, planner]           # Names, not paths ✓
 
 **Contract references remain valid** - agents reference contracts by path from repo root:
 ```markdown
-{ "$ref": ".claude-plugin/contracts/story.schema.json" }  # Still valid ✓
+{ "$ref": "plugins/orc/contracts/story.schema.json" }  # Still valid ✓
 ```
 
 ### Phase 5: Add Command Frontmatter
@@ -307,8 +307,8 @@ rm SKILL.md
 | Reference Type | Example | Why It Works |
 |----------------|---------|--------------|
 | Agent spawning | `can_spawn: [analyzer, planner]` | Uses names, not paths |
-| Contract refs | `"$ref": ".claude-plugin/contracts/story.schema.json"` | Path from repo root unchanged |
-| Pattern refs | `Read .claude-plugin/patterns/auth/jwt-tokens.md` | Path from repo root unchanged |
+| Contract refs | `"$ref": "plugins/orc/contracts/story.schema.json"` | Path from repo root unchanged |
+| Pattern refs | `Read plugins/orc/patterns/auth/jwt-tokens.md` | Path from repo root unchanged |
 | Hook scripts | `hooks/scripts/validate-story.sh` | Path from repo root unchanged |
 | Runtime dir | `.orc/plan/state.json` | Created at repo root unchanged |
 
@@ -327,7 +327,7 @@ rm SKILL.md
 ## Verification Checklist
 
 ### Structural Validation
-- [ ] `.claude-plugin/plugin.json` exists and is valid JSON
+- [ ] `plugins/orc/plugin.json` exists and is valid JSON
 - [ ] `skills/orc/SKILL.md` exists with valid frontmatter
 - [ ] All 19 agents in `agents/` (flat, no subdirectories)
 - [ ] All 13 commands in `commands/` have frontmatter
@@ -347,8 +347,8 @@ rm SKILL.md
 - [ ] `/orc clear` - Resets state, preserves learnings
 
 ### Reference Validation
-- [ ] Agents can read `.claude-plugin/contracts/*.json` schemas
-- [ ] Agents can read `.claude-plugin/patterns/**/*.md` files
+- [ ] Agents can read `plugins/orc/contracts/*.json` schemas
+- [ ] Agents can read `plugins/orc/patterns/**/*.md` files
 - [ ] Hooks scripts execute from `hooks/scripts/`
 - [ ] Runtime state saves to `.orc/`
 
@@ -359,7 +359,7 @@ rm SKILL.md
 ### Create New
 | File | Description |
 |------|-------------|
-| `.claude-plugin/plugin.json` | Standard manifest |
+| `plugins/orc/plugin.json` | Standard manifest |
 | `skills/orc/SKILL.md` | Transformed skill with frontmatter |
 | `hooks/scripts/graceful-shutdown.sh` | Claude Code Stop hook |
 
@@ -392,7 +392,7 @@ rm SKILL.md
 ### Delete
 | File/Directory | Reason |
 |----------------|--------|
-| `plugin.json` (root) | Replaced by `.claude-plugin/plugin.json` |
+| `plugin.json` (root) | Replaced by `plugins/orc/plugin.json` |
 | `SKILL.md` (root) | Moved to `skills/orc/SKILL.md` |
 | `agents/core/` | Agents moved to `agents/` |
 | `agents/specialists/` | Agents moved to `agents/` |
@@ -400,9 +400,9 @@ rm SKILL.md
 ### Unchanged
 | Directory | Contents |
 |-----------|----------|
-| `.claude-plugin/contracts/` | All 13 JSON schemas |
-| `.claude-plugin/patterns/` | All pattern files |
-| `.claude-plugin/docs/` | All documentation |
+| `plugins/orc/contracts/` | All 13 JSON schemas |
+| `plugins/orc/patterns/` | All pattern files |
+| `plugins/orc/docs/` | All documentation |
 | `hooks/scripts/` | Existing hook scripts |
 
 ---
