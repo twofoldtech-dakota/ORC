@@ -4,12 +4,12 @@ argument-hint: ""
 allowed-tools: [Read, Write, Glob, Grep]
 ---
 
-# /orc learn Command
+# /orc:learn Command
 
 ## Usage
 
 ```
-/orc learn
+/orc:learn
 ```
 
 ## Description

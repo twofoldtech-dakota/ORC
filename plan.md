@@ -16,7 +16,7 @@ Refactor ORC to be a fully Claude Code marketplace-compliant plugin while preser
 
 ## Critical Constraints (DO NOT BREAK)
 
-- 13 command names/signatures (`/orc analyze`, `/orc plan`, etc.)
+- 13 command names/signatures (`/orc:analyze`, `/orc:plan`, etc.)
 - `.orc/` runtime directory structure
 - `state.json` schema (resume capability)
 - Agent spawning relationships (names, not paths)
@@ -130,7 +130,7 @@ mkdir -p skills/orc
 ```yaml
 ---
 name: orc
-description: "Multi-Agent Orchestration System for Autonomous Software Development. Invoke with /orc commands to plan, execute, and review code implementations."
+description: "Multi-Agent Orchestration System for Autonomous Software Development. Invoke with /orc: commands to plan, execute, and review code implementations."
 version: 1.0.0
 triggers:
   - "/orc"
@@ -336,15 +336,15 @@ rm SKILL.md
 - [ ] Old directories removed (`agents/core/`, `agents/specialists/`)
 
 ### Functional Validation
-- [ ] `/orc analyze` - Creates `.orc/plan/codebase_profile.json`
-- [ ] `/orc plan "test"` - Creates plan with epics/features/stories
-- [ ] `/orc show` - Displays plan correctly
-- [ ] `/orc approve` - Updates state to approved
-- [ ] `/orc run` - Executes stories, triggers hooks
-- [ ] `/orc stop` - Saves checkpoint
-- [ ] `/orc resume` - Restores from checkpoint
-- [ ] `/orc status` - Shows current state
-- [ ] `/orc clear` - Resets state, preserves learnings
+- [ ] `/orc:analyze` - Creates `.orc/plan/codebase_profile.json`
+- [ ] `/orc:plan "test"` - Creates plan with epics/features/stories
+- [ ] `/orc:show` - Displays plan correctly
+- [ ] `/orc:approve` - Updates state to approved
+- [ ] `/orc:run` - Executes stories, triggers hooks
+- [ ] `/orc:stop` - Saves checkpoint
+- [ ] `/orc:resume` - Restores from checkpoint
+- [ ] `/orc:status` - Shows current state
+- [ ] `/orc:clear` - Resets state, preserves learnings
 
 ### Reference Validation
 - [ ] Agents can read `plugins/orc/contracts/*.json` schemas

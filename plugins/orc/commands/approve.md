@@ -4,15 +4,15 @@ argument-hint: "[<epic-id>] [deviation <id>] [deviations]"
 allowed-tools: [Read, Write]
 ---
 
-# /orc approve Command
+# /orc:approve Command
 
 ## Usage
 
 ```
-/orc approve                    # Approve all pending epics
-/orc approve <epic-id>          # Approve specific epic
-/orc approve deviation <id>     # Approve specific deviation
-/orc approve deviations         # Approve all deviations
+/orc:approve                    # Approve all pending epics
+/orc:approve <epic-id>          # Approve specific epic
+/orc:approve deviation <id>     # Approve specific deviation
+/orc:approve deviations         # Approve all deviations
 ```
 
 ## Description
@@ -21,7 +21,7 @@ Approves plan items or deviations for execution. Approval is **mandatory** befor
 
 ## Behaviors
 
-### Approve All Epics (`/orc approve`)
+### Approve All Epics (`/orc:approve`)
 
 Approves all pending epics in the plan:
 
@@ -34,11 +34,11 @@ Approved Epics:
 
 Total: 7 features, 21 stories ready for execution
 
-Run /orc run to execute all epics
-Run /orc next to execute next epic only
+Run /orc:run to execute all epics
+Run /orc:next to execute next epic only
 ```
 
-### Approve Specific Epic (`/orc approve <epic-id>`)
+### Approve Specific Epic (`/orc:approve <epic-id>`)
 
 Approves single epic:
 
@@ -49,11 +49,11 @@ Features: 3
 Stories: 9
 Patterns matched: 4
 
-Run /orc run E1 to execute this epic
-Run /orc approve E2 to approve next epic
+Run /orc:run E1 to execute this epic
+Run /orc:approve E2 to approve next epic
 ```
 
-### Approve Deviation (`/orc approve deviation <id>`)
+### Approve Deviation (`/orc:approve deviation <id>`)
 
 Approves a specific deviation:
 
@@ -69,7 +69,7 @@ Approves a specific deviation:
 Remaining deviations pending review: 1
 ```
 
-### Approve All Deviations (`/orc approve deviations`)
+### Approve All Deviations (`/orc:approve deviations`)
 
 Approves all pending deviations:
 
@@ -111,7 +111,7 @@ Confidence restored to 100%
 
 | Error | Response |
 |-------|----------|
-| No plan | "No plan found. Run /orc plan <goal> first." |
+| No plan | "No plan found. Run /orc:plan <goal> first." |
 | Already approved | "Epic E1 is already approved." |
 | Invalid epic ID | "Epic '<id>' not found. Available: E1, E2" |
 | Invalid deviation ID | "Deviation '<id>' not found." |
@@ -121,24 +121,24 @@ Confidence restored to 100%
 ## Approval Flow
 
 ```
-/orc plan "Build API"
+/orc:plan "Build API"
     │
     ▼
 Plan created (pending approval)
     │
     ▼
-/orc show           # Review plan
+/orc:show           # Review plan
     │
     ▼
-/orc approve        # Approve all
+/orc:approve        # Approve all
     │         or
-/orc approve E1     # Approve specific
+/orc:approve E1     # Approve specific
     │
     ▼
 Ready for execution
     │
     ▼
-/orc run
+/orc:run
 ```
 
 ## Confirmation Output

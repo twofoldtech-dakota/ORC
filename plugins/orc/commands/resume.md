@@ -4,12 +4,12 @@ argument-hint: ""
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Task]
 ---
 
-# /orc resume Command
+# /orc:resume Command
 
 ## Usage
 
 ```
-/orc resume
+/orc:resume
 ```
 
 ## Description
@@ -80,7 +80,7 @@ Choice:
 
 ## Use Cases
 
-- After `/orc stop`
+- After `/orc:stop`
 - After system interruption
 - After manual review/modification
 - After fixing blocked stories externally
@@ -89,7 +89,7 @@ Choice:
 
 | Error | Response |
 |-------|----------|
-| No checkpoint | "No checkpoint found. Run /orc run to start execution." |
+| No checkpoint | "No checkpoint found. Run /orc:run to start execution." |
 | Corrupt checkpoint | "Checkpoint file corrupted. Manual recovery needed." |
 | Validation failed | Shows validation issues with options |
-| Already executing | "Execution already in progress. Use /orc stop first." |
+| Already executing | "Execution already in progress. Use /orc:stop first." |

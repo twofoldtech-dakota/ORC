@@ -4,12 +4,12 @@ argument-hint: ""
 allowed-tools: [Read]
 ---
 
-# /orc status Command
+# /orc:status Command
 
 ## Usage
 
 ```
-/orc status
+/orc:status
 ```
 
 ## Description
@@ -57,9 +57,9 @@ Tests Added: 32
 Coverage: 82%
 
 Commands:
-  /orc show          - View plan details
-  /orc show E3       - View current epic
-  /orc stop          - Pause execution
+  /orc:show          - View plan details
+  /orc:show E3       - View current epic
+  /orc:stop          - Pause execution
 ```
 
 ## Status Indicators
@@ -111,9 +111,9 @@ Phase: execute (ERROR)
 3. Confidence below threshold: 72%
 
 Recommended Actions:
-  /orc retry E2-F2-S3     - Fix database connection
-  /orc show deviations    - Review pending deviations
-  /orc stop               - Pause for investigation
+  /orc:retry E2-F2-S3     - Fix database connection
+  /orc:show deviations    - Review pending deviations
+  /orc:stop               - Pause for investigation
 ```
 
 ## No Session
@@ -123,5 +123,5 @@ Recommended Actions:
 
 No active session.
 
-Run /orc plan <goal> to start a new session.
+Run /orc:plan <goal> to start a new session.
 ```

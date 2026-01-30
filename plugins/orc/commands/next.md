@@ -4,12 +4,12 @@ argument-hint: ""
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Task]
 ---
 
-# /orc next Command
+# /orc:next Command
 
 ## Usage
 
 ```
-/orc next
+/orc:next
 ```
 
 ## Description
@@ -48,9 +48,9 @@ Execution paused.
 Next epic: E2 - API Endpoints [4 features, 12 stories]
 
 Commands:
-  /orc next        - Execute next epic
-  /orc run         - Execute all remaining epics
-  /orc show E2     - Preview next epic
+  /orc:next        - Execute next epic
+  /orc:run         - Execute all remaining epics
+  /orc:show E2     - Preview next epic
 ```
 
 ## Use Cases
@@ -62,7 +62,7 @@ Commands:
 
 ## State Updates
 
-- Same as `/orc run` but pauses after epic completion
+- Same as `/orc:run` but pauses after epic completion
 - Sets `phase` to `execute` (paused at epic boundary)
 - Does not transition to `review` until all epics done
 
@@ -70,6 +70,6 @@ Commands:
 
 | Error | Response |
 |-------|----------|
-| No next epic | "All approved epics completed. Run /orc show for summary." |
-| No approved epics | "No approved epics. Run /orc approve first." |
-| Current epic blocked | "Current epic is blocked. Run /orc show to see blockers." |
+| No next epic | "All approved epics completed. Run /orc:show for summary." |
+| No approved epics | "No approved epics. Run /orc:approve first." |
+| Current epic blocked | "Current epic is blocked. Run /orc:show to see blockers." |

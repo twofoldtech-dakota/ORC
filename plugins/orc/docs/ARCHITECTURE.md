@@ -266,7 +266,7 @@ Checkpoint contains:
 
 ### Recovery Protocol
 
-On `/orc resume`:
+On `/orc:resume`:
 1. Load latest checkpoint
 2. Validate codebase matches
 3. Identify incomplete work

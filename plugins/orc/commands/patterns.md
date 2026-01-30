@@ -4,14 +4,14 @@ argument-hint: "[<category>] [search <query>]"
 allowed-tools: [Read]
 ---
 
-# /orc patterns Command
+# /orc:patterns Command
 
 ## Usage
 
 ```
-/orc patterns                  # Show all patterns
-/orc patterns <category>       # Show patterns by category
-/orc patterns search <query>   # Search patterns
+/orc:patterns                  # Show all patterns
+/orc:patterns <category>       # Show patterns by category
+/orc:patterns search <query>   # Search patterns
 ```
 
 ## Description
@@ -20,7 +20,7 @@ Displays learned patterns from the learnings database. Patterns are used to sugg
 
 ## Output
 
-### All Patterns (`/orc patterns`)
+### All Patterns (`/orc:patterns`)
 
 ```
 📚 Learned Patterns
@@ -59,11 +59,11 @@ Low Confidence (needs review):
     ⚠ sp_email_001     Email service pattern           [25% confidence]
 
 Commands:
-  /orc patterns auth         - Show auth patterns
-  /orc patterns search jwt   - Search for 'jwt'
+  /orc:patterns auth         - Show auth patterns
+  /orc:patterns search jwt   - Search for 'jwt'
 ```
 
-### Category View (`/orc patterns <category>`)
+### Category View (`/orc:patterns <category>`)
 
 ```
 📚 Authentication Patterns
@@ -102,7 +102,7 @@ sp_jwt_001: JWT token generation
 ... (more patterns)
 ```
 
-### Search (`/orc patterns search <query>`)
+### Search (`/orc:patterns search <query>`)
 
 ```
 📚 Search Results: "jwt"

@@ -276,7 +276,7 @@ Pending Items:
    - Recommendation: Standardize to camelCase
 
 Actions:
-- /orc approve deviation <id> - Approve specific deviation
-- /orc approve deviations - Approve all deviations
-- /orc show E1-F1-S2 - View story details
+- /orc:approve deviation <id> - Approve specific deviation
+- /orc:approve deviations - Approve all deviations
+- /orc:show E1-F1-S2 - View story details
 ```

@@ -4,14 +4,14 @@ Complete reference for all ORC commands.
 
 ## Analysis Commands
 
-### `/orc analyze`
+### `/orc:analyze`
 
 Performs pre-flight codebase analysis to understand conventions, patterns, and project structure.
 
 **Variants:**
-- `/orc analyze` - Run analysis (uses cache if valid)
-- `/orc analyze --force` - Force re-analysis, ignore cache
-- `/orc analyze --focus <areas>` - Focus on specific areas
+- `/orc:analyze` - Run analysis (uses cache if valid)
+- `/orc:analyze --force` - Force re-analysis, ignore cache
+- `/orc:analyze --focus <areas>` - Focus on specific areas
 
 **Focus Areas:**
 - `conventions` - Naming, formatting, file organization
@@ -29,7 +29,7 @@ Performs pre-flight codebase analysis to understand conventions, patterns, and p
 
 **Example:**
 ```
-/orc analyze
+/orc:analyze
 
 🔍 Analyzing Codebase...
 
@@ -49,7 +49,7 @@ Frameworks: express, prisma, react
 
 ## Planning Commands
 
-### `/orc plan <goal>`
+### `/orc:plan <goal>`
 
 Creates a new plan or appends to an existing plan.
 
@@ -62,7 +62,7 @@ Creates a new plan or appends to an existing plan.
 
 **Example:**
 ```
-/orc plan "Build REST API with JWT authentication and user management"
+/orc:plan "Build REST API with JWT authentication and user management"
 ```
 
 **Output:**
@@ -74,19 +74,19 @@ Epics (2):
   E2: User Management [2 features, 6 stories]
 
 Total: 5 features, 15 stories
-Run /orc approve to proceed
+Run /orc:approve to proceed
 ```
 
 ---
 
-### `/orc show`
+### `/orc:show`
 
 Displays the current plan summary.
 
 **Variants:**
-- `/orc show` - Full plan overview
-- `/orc show <epic-id>` - Detailed epic view (e.g., `/orc show E1`)
-- `/orc show deviations` - List all deviations pending review
+- `/orc:show` - Full plan overview
+- `/orc:show <epic-id>` - Detailed epic view (e.g., `/orc:show E1`)
+- `/orc:show deviations` - List all deviations pending review
 
 **Output includes:**
 - Epic/feature/story counts and status
@@ -97,15 +97,15 @@ Displays the current plan summary.
 
 ---
 
-### `/orc approve`
+### `/orc:approve`
 
 Approves plan items for execution.
 
 **Variants:**
-- `/orc approve` - Approve all pending epics
-- `/orc approve <epic-id>` - Approve specific epic
-- `/orc approve deviation <id>` - Approve specific deviation
-- `/orc approve deviations` - Approve all deviations
+- `/orc:approve` - Approve all pending epics
+- `/orc:approve <epic-id>` - Approve specific epic
+- `/orc:approve deviation <id>` - Approve specific deviation
+- `/orc:approve deviations` - Approve all deviations
 
 **Note:** Approval is **mandatory** before execution can begin.
 
@@ -113,13 +113,13 @@ Approves plan items for execution.
 
 ## Execution Commands
 
-### `/orc run`
+### `/orc:run`
 
 Executes approved epics.
 
 **Variants:**
-- `/orc run` - Execute all approved epics
-- `/orc run <epic-id>` - Execute specific epic
+- `/orc:run` - Execute all approved epics
+- `/orc:run <epic-id>` - Execute specific epic
 
 **Behavior:**
 - Processes epics in priority order
@@ -137,7 +137,7 @@ Verbose progress showing:
 
 ---
 
-### `/orc next`
+### `/orc:next`
 
 Executes only the next priority epic, then pauses.
 
@@ -145,7 +145,7 @@ Executes only the next priority epic, then pauses.
 
 ---
 
-### `/orc stop`
+### `/orc:stop`
 
 Gracefully stops execution.
 
@@ -154,11 +154,11 @@ Gracefully stops execution.
 - Saves checkpoint
 - Does not abort mid-story
 
-**Resume with:** `/orc resume`
+**Resume with:** `/orc:resume`
 
 ---
 
-### `/orc resume`
+### `/orc:resume`
 
 Resumes execution from the last checkpoint.
 
@@ -169,7 +169,7 @@ Resumes execution from the last checkpoint.
 
 ---
 
-### `/orc retry <story-id>`
+### `/orc:retry <story-id>`
 
 Retries a blocked story.
 
@@ -187,14 +187,14 @@ Retries a blocked story.
 
 ## Learning Commands
 
-### `/orc patterns`
+### `/orc:patterns`
 
 Displays learned patterns.
 
 **Variants:**
-- `/orc patterns` - All patterns
-- `/orc patterns <category>` - By category (auth, api, database, testing)
-- `/orc patterns search <query>` - Search patterns
+- `/orc:patterns` - All patterns
+- `/orc:patterns <category>` - By category (auth, api, database, testing)
+- `/orc:patterns search <query>` - Search patterns
 
 **Shows:**
 - Pattern ID, name, confidence
@@ -204,7 +204,7 @@ Displays learned patterns.
 
 ---
 
-### `/orc learn`
+### `/orc:learn`
 
 Forces immediate pattern extraction.
 
@@ -221,7 +221,7 @@ Forces immediate pattern extraction.
 
 ## Utility Commands
 
-### `/orc status`
+### `/orc:status`
 
 Shows current ORC state.
 
@@ -234,7 +234,7 @@ Shows current ORC state.
 
 ---
 
-### `/orc clear`
+### `/orc:clear`
 
 Clears plan and state.
 
@@ -244,7 +244,7 @@ Clears plan and state.
 - **Preserves** learned patterns
 
 **Variant:**
-- `/orc clear --all` - Also deletes learnings (requires typing "DELETE ALL")
+- `/orc:clear --all` - Also deletes learnings (requires typing "DELETE ALL")
 
 ---
 
@@ -252,21 +252,21 @@ Clears plan and state.
 
 | Command | Purpose |
 |---------|---------|
-| `/orc analyze` | Analyze codebase |
-| `/orc analyze --force` | Force re-analysis |
-| `/orc plan <goal>` | Create/append plan |
-| `/orc show` | View plan |
-| `/orc show E1` | View epic E1 |
-| `/orc show deviations` | View deviations |
-| `/orc approve` | Approve all |
-| `/orc approve E1` | Approve E1 |
-| `/orc run` | Execute all |
-| `/orc run E1` | Execute E1 |
-| `/orc next` | Execute next epic |
-| `/orc stop` | Stop execution |
-| `/orc resume` | Resume execution |
-| `/orc retry E1-F2-S3` | Retry story |
-| `/orc patterns` | View patterns |
-| `/orc learn` | Extract patterns |
-| `/orc status` | View status |
-| `/orc clear` | Clear state |
+| `/orc:analyze` | Analyze codebase |
+| `/orc:analyze --force` | Force re-analysis |
+| `/orc:plan <goal>` | Create/append plan |
+| `/orc:show` | View plan |
+| `/orc:show E1` | View epic E1 |
+| `/orc:show deviations` | View deviations |
+| `/orc:approve` | Approve all |
+| `/orc:approve E1` | Approve E1 |
+| `/orc:run` | Execute all |
+| `/orc:run E1` | Execute E1 |
+| `/orc:next` | Execute next epic |
+| `/orc:stop` | Stop execution |
+| `/orc:resume` | Resume execution |
+| `/orc:retry E1-F2-S3` | Retry story |
+| `/orc:patterns` | View patterns |
+| `/orc:learn` | Extract patterns |
+| `/orc:status` | View status |
+| `/orc:clear` | Clear state |

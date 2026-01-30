@@ -4,12 +4,12 @@ argument-hint: "<story-id>"
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Task]
 ---
 
-# /orc retry Command
+# /orc:retry Command
 
 ## Usage
 
 ```
-/orc retry <story-id>
+/orc:retry <story-id>
 ```
 
 ## Description
@@ -91,7 +91,7 @@ Continue execution? [Y/n]:
 $ docker-compose up -d postgres
 
 # User retries the story
-> /orc retry E2-F2-S3
+> /orc:retry E2-F2-S3
 
 # Story succeeds
 [E2-F2-S3] Database migration setup (attempt 1/3)

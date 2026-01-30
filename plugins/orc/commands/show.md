@@ -4,14 +4,14 @@ argument-hint: "[<epic-id>] [deviations]"
 allowed-tools: [Read]
 ---
 
-# /orc show Command
+# /orc:show Command
 
 ## Usage
 
 ```
-/orc show                    # Show plan summary
-/orc show <epic-id>          # Show epic details
-/orc show deviations         # Show all deviations
+/orc:show                    # Show plan summary
+/orc:show <epic-id>          # Show epic details
+/orc:show deviations         # Show all deviations
 ```
 
 ## Description
@@ -20,7 +20,7 @@ Displays plan information, epic details, or deviation log based on arguments.
 
 ## Behaviors
 
-### Plan Summary (`/orc show`)
+### Plan Summary (`/orc:show`)
 
 Shows overview of entire plan:
 
@@ -49,12 +49,12 @@ Confidence: 94%
 Deviations: 2 (1 pending review)
 
 Commands:
-  /orc show E2          - View epic details
-  /orc show deviations  - Review deviations
-  /orc run              - Continue execution
+  /orc:show E2          - View epic details
+  /orc:show deviations  - Review deviations
+  /orc:run              - Continue execution
 ```
 
-### Epic Details (`/orc show <epic-id>`)
+### Epic Details (`/orc:show <epic-id>`)
 
 Shows detailed view of specific epic:
 
@@ -112,7 +112,7 @@ For in-progress or pending stories, show additional detail:
      └─
 ```
 
-### Deviations (`/orc show deviations`)
+### Deviations (`/orc:show deviations`)
 
 Shows all deviations requiring review:
 
@@ -140,8 +140,8 @@ Reviewed (2):
   ✓ [E1-F3-S2] Mock email service used (approved)
 
 Commands:
-  /orc approve deviation 1   - Approve specific deviation
-  /orc approve deviations    - Approve all pending
+  /orc:approve deviation 1   - Approve specific deviation
+  /orc:approve deviations    - Approve all pending
 ```
 
 ## Status Icons
@@ -158,6 +158,6 @@ Commands:
 
 | Error | Response |
 |-------|----------|
-| No plan exists | "No plan found. Run /orc plan <goal> to create one." |
+| No plan exists | "No plan found. Run /orc:plan <goal> to create one." |
 | Invalid epic ID | "Epic '<id>' not found. Available epics: E1, E2, E3" |
-| Invalid argument | "Unknown argument. Usage: /orc show [epic-id|deviations]" |
+| Invalid argument | "Unknown argument. Usage: /orc:show [epic-id|deviations]" |

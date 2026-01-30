@@ -1,9 +1,9 @@
 ---
 name: orc
-description: "Multi-Agent Orchestration System - invoke with /orc commands for autonomous software development"
+description: "Multi-Agent Orchestration System - invoke with /orc: commands for autonomous software development"
 version: 1.0.0
 triggers:
-  - "/orc"
+  - "/orc:"
 ---
 
 # ORC - Multi-Agent Orchestration System
@@ -28,40 +28,40 @@ User Goal → Analyze Phase → Plan Phase → User Approval → Execute Phase �
 
 | Command | Description |
 |---------|-------------|
-| `/orc analyze` | Analyze codebase conventions and patterns |
-| `/orc analyze --force` | Force re-analysis (ignore cache) |
-| `/orc analyze --focus <areas>` | Analyze specific areas only |
+| `/orc:analyze` | Analyze codebase conventions and patterns |
+| `/orc:analyze --force` | Force re-analysis (ignore cache) |
+| `/orc:analyze --focus <areas>` | Analyze specific areas only |
 
 ### Planning Commands
 
 | Command | Description |
 |---------|-------------|
-| `/orc plan <goal>` | Create or append epic to plan |
-| `/orc show` | Display plan summary |
-| `/orc show <epic-id>` | Display epic details |
-| `/orc show deviations` | Show all deviations for review |
-| `/orc approve` | Approve all pending epics |
-| `/orc approve <epic-id>` | Approve specific epic |
+| `/orc:plan <goal>` | Create or append epic to plan |
+| `/orc:show` | Display plan summary |
+| `/orc:show <epic-id>` | Display epic details |
+| `/orc:show deviations` | Show all deviations for review |
+| `/orc:approve` | Approve all pending epics |
+| `/orc:approve <epic-id>` | Approve specific epic |
 
 ### Execution Commands
 
 | Command | Description |
 |---------|-------------|
-| `/orc run` | Execute all approved epics |
-| `/orc run <epic-id>` | Execute specific epic |
-| `/orc next` | Execute next priority epic only |
-| `/orc stop` | Stop execution gracefully |
-| `/orc resume` | Resume from last checkpoint |
-| `/orc retry <story-id>` | Retry a blocked story |
+| `/orc:run` | Execute all approved epics |
+| `/orc:run <epic-id>` | Execute specific epic |
+| `/orc:next` | Execute next priority epic only |
+| `/orc:stop` | Stop execution gracefully |
+| `/orc:resume` | Resume from last checkpoint |
+| `/orc:retry <story-id>` | Retry a blocked story |
 
 ### Learning & Utility Commands
 
 | Command | Description |
 |---------|-------------|
-| `/orc patterns` | Show learned patterns |
-| `/orc learn` | Force pattern extraction now |
-| `/orc status` | Show current state summary |
-| `/orc clear` | Clear plan and state |
+| `/orc:patterns` | Show learned patterns |
+| `/orc:learn` | Force pattern extraction now |
+| `/orc:status` | Show current state summary |
+| `/orc:clear` | Clear plan and state |
 
 ## Command Routing
 

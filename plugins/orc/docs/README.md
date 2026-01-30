@@ -8,16 +8,16 @@ ORC is a Claude Code plugin that transforms high-level goals into complete, test
 
 ```bash
 # Create a plan
-/orc plan "Build REST API with user authentication"
+/orc:plan "Build REST API with user authentication"
 
 # Review the plan
-/orc show
+/orc:show
 
 # Approve the plan
-/orc approve
+/orc:approve
 
 # Execute
-/orc run
+/orc:run
 ```
 
 ## Core Philosophy
@@ -57,30 +57,30 @@ Successful implementations are extracted as patterns. Future similar tasks autom
 ### Planning
 | Command | Description |
 |---------|-------------|
-| `/orc plan <goal>` | Create or append to plan |
-| `/orc show` | Display plan summary |
-| `/orc show <epic-id>` | Display epic details |
-| `/orc show deviations` | Show deviations for review |
-| `/orc approve` | Approve all pending epics |
-| `/orc approve <epic-id>` | Approve specific epic |
+| `/orc:plan <goal>` | Create or append to plan |
+| `/orc:show` | Display plan summary |
+| `/orc:show <epic-id>` | Display epic details |
+| `/orc:show deviations` | Show deviations for review |
+| `/orc:approve` | Approve all pending epics |
+| `/orc:approve <epic-id>` | Approve specific epic |
 
 ### Execution
 | Command | Description |
 |---------|-------------|
-| `/orc run` | Execute all approved epics |
-| `/orc run <epic-id>` | Execute specific epic |
-| `/orc next` | Execute next priority epic only |
-| `/orc stop` | Stop execution gracefully |
-| `/orc resume` | Resume from last checkpoint |
-| `/orc retry <story-id>` | Retry a blocked story |
+| `/orc:run` | Execute all approved epics |
+| `/orc:run <epic-id>` | Execute specific epic |
+| `/orc:next` | Execute next priority epic only |
+| `/orc:stop` | Stop execution gracefully |
+| `/orc:resume` | Resume from last checkpoint |
+| `/orc:retry <story-id>` | Retry a blocked story |
 
 ### Learning & Utility
 | Command | Description |
 |---------|-------------|
-| `/orc patterns` | Show learned patterns |
-| `/orc learn` | Force pattern extraction |
-| `/orc status` | Show current state |
-| `/orc clear` | Clear plan and state |
+| `/orc:patterns` | Show learned patterns |
+| `/orc:learn` | Force pattern extraction |
+| `/orc:status` | Show current state |
+| `/orc:clear` | Clear plan and state |
 
 ## Plan Hierarchy
 
@@ -158,7 +158,7 @@ ORC maintains state in `.orc/`:
 ## Example Session
 
 ```
-> /orc plan "Build a blog API with authentication"
+> /orc:plan "Build a blog API with authentication"
 
 📋 Plan Created: Build a blog API with authentication
 
@@ -168,12 +168,12 @@ Epics (2):
 
 Total: 7 features, 23 stories
 
-Run /orc approve to proceed
+Run /orc:approve to proceed
 
-> /orc approve
+> /orc:approve
 ✓ Plan approved
 
-> /orc run
+> /orc:run
 Starting execution...
 
 [E1-F1-S1] Creating User model
