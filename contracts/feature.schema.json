@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "feature.schema.json",
+  "title": "ORC Feature",
+  "description": "Schema for a Feature - a self-contained capability within an Epic",
+  "type": "object",
+  "required": ["id", "epic_id", "name", "description", "acceptance_criteria", "stories", "status"],
+  "properties": {
+    "id": {
+      "$ref": "_definitions.schema.json#/$defs/featureId"
+    },
+    "epic_id": {
+      "$ref": "_definitions.schema.json#/$defs/epicId"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable feature name"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Detailed description of the feature"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/acceptanceCriterion"
+      },
+      "minItems": 1,
+      "description": "Feature-level acceptance criteria"
+    },
+    "stories": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/storyId"
+      },
+      "minItems": 1,
+      "description": "List of story IDs in this feature"
+    },
+    "status": {
+      "$ref": "_definitions.schema.json#/$defs/status"
+    },
+    "parallel_groups": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "$ref": "_definitions.schema.json#/$defs/storyId"
+        }
+      },
+      "description": "Groups of stories that can execute in parallel"
+    },
+    "created_at": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    },
+    "started_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    },
+    "completed_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

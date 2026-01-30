@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Design System",
+  "type": "object",
+  "properties": {
+    "spacing": {
+      "type": "object",
+      "properties": {
+        "base_unit": {
+          "type": "number",
+          "default": 4
+        },
+        "scale": {
+          "type": "array",
+          "items": { "type": "number" },
+          "default": [0, 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96]
+        },
+        "enforce": {
+          "type": "string",
+          "default": "No arbitrary values like p-[13px]"
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "properties": {
+        "font_family": {
+          "type": "object",
+          "properties": {
+            "sans": { "type": "string", "default": "Inter, system-ui, sans-serif" },
+            "mono": { "type": "string", "default": "JetBrains Mono, Fira Code, monospace" }
+          }
+        },
+        "scale": {
+          "type": "object",
+          "properties": {
+            "xs": { "type": "string", "default": "0.75rem" },
+            "sm": { "type": "string", "default": "0.875rem" },
+            "base": { "type": "string", "default": "1rem" },
+            "lg": { "type": "string", "default": "1.125rem" },
+            "xl": { "type": "string", "default": "1.25rem" },
+            "2xl": { "type": "string", "default": "1.5rem" },
+            "3xl": { "type": "string", "default": "1.875rem" },
+            "4xl": { "type": "string", "default": "2.25rem" },
+            "5xl": { "type": "string", "default": "3rem" },
+            "6xl": { "type": "string", "default": "3.75rem" }
+          }
+        },
+        "weights": {
+          "type": "array",
+          "items": { "type": "number" },
+          "default": [400, 500, 600, 700]
+        },
+        "enforce": {
+          "type": "string",
+          "default": "No arbitrary font sizes, weights must be from scale"
+        }
+      }
+    },
+    "colors": {
+      "type": "object",
+      "properties": {
+        "require_custom_palette": {
+          "type": "boolean",
+          "default": true
+        },
+        "no_default_tailwind": {
+          "type": "boolean",
+          "default": true
+        },
+        "structure": {
+          "type": "object",
+          "properties": {
+            "primary": { "type": "object" },
+            "secondary": { "type": "object" },
+            "accent": { "type": "object" },
+            "neutral": { "type": "object" },
+            "success": { "type": "object" },
+            "warning": { "type": "object" },
+            "error": { "type": "object" }
+          }
+        },
+        "semantic_tokens": {
+          "type": "object",
+          "properties": {
+            "background": {
+              "type": "object",
+              "properties": {
+                "DEFAULT": { "type": "string", "default": "neutral.50" },
+                "dark": { "type": "string", "default": "neutral.950" }
+              }
+            },
+            "foreground": {
+              "type": "object",
+              "properties": {
+                "DEFAULT": { "type": "string", "default": "neutral.900" },
+                "dark": { "type": "string", "default": "neutral.50" }
+              }
+            },
+            "muted": {
+              "type": "object",
+              "properties": {
+                "DEFAULT": { "type": "string", "default": "neutral.100" },
+                "foreground": { "type": "string", "default": "neutral.500" }
+              }
+            },
+            "border": {
+              "type": "object",
+              "properties": {
+                "DEFAULT": { "type": "string", "default": "neutral.200" },
+                "dark": { "type": "string", "default": "neutral.800" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "radius": {
+      "type": "object",
+      "properties": {
+        "scale": {
+          "type": "object",
+          "properties": {
+            "none": { "type": "string", "default": "0" },
+            "sm": { "type": "string", "default": "0.125rem" },
+            "DEFAULT": { "type": "string", "default": "0.25rem" },
+            "md": { "type": "string", "default": "0.375rem" },
+            "lg": { "type": "string", "default": "0.5rem" },
+            "xl": { "type": "string", "default": "0.75rem" },
+            "2xl": { "type": "string", "default": "1rem" },
+            "full": { "type": "string", "default": "9999px" }
+          }
+        },
+        "enforce": {
+          "type": "string",
+          "default": "No rounded-lg on everything - intentional per component"
+        }
+      }
+    },
+    "shadows": {
+      "type": "object",
+      "properties": {
+        "require_custom": {
+          "type": "boolean",
+          "default": true
+        },
+        "dark_mode": {
+          "type": "string",
+          "default": "Shadows should be more subtle or use glow effects"
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "timing_functions": {
+          "type": "object",
+          "properties": {
+            "DEFAULT": { "type": "string", "default": "cubic-bezier(0.4, 0, 0.2, 1)" },
+            "spring": { "type": "string", "default": "Use framer-motion spring" },
+            "bounce": { "type": "string", "default": "cubic-bezier(0.68, -0.55, 0.265, 1.55)" }
+          }
+        },
+        "durations": {
+          "type": "object",
+          "properties": {
+            "fast": { "type": "string", "default": "150ms" },
+            "normal": { "type": "string", "default": "200ms" },
+            "slow": { "type": "string", "default": "300ms" }
+          }
+        },
+        "enforce": {
+          "type": "object",
+          "properties": {
+            "no_linear": { "type": "string", "default": "Never use linear easing for UI animations" },
+            "no_long_durations": { "type": "string", "default": "Nothing over 500ms except page transitions" },
+            "reduced_motion": { "type": "string", "default": "All animations must respect prefers-reduced-motion" }
+          }
+        }
+      }
+    }
+  }
+}

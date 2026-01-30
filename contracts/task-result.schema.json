@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task-result.schema.json",
+  "title": "ORC Task Result",
+  "description": "Schema for story implementation result",
+  "type": "object",
+  "required": ["story_id", "status"],
+  "properties": {
+    "story_id": {
+      "$ref": "_definitions.schema.json#/$defs/storyId"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "failed", "blocked"],
+      "description": "Final status of the implementation"
+    },
+    "files_created": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/filePath"
+      },
+      "default": [],
+      "description": "Files that were created"
+    },
+    "files_modified": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/filePath"
+      },
+      "default": [],
+      "description": "Files that were modified"
+    },
+    "tests_written": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/filePath"
+      },
+      "default": [],
+      "description": "Test files created or modified"
+    },
+    "acceptance_criteria_evidence": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "met": {
+            "type": "boolean"
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": ["met", "evidence"]
+      },
+      "description": "Evidence for each acceptance criterion"
+    },
+    "deviations": {
+      "type": "array",
+      "items": {
+        "$ref": "deviation.schema.json"
+      },
+      "default": [],
+      "description": "Deviations recorded during implementation"
+    },
+    "specialists_used": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/specialistType"
+      },
+      "default": [],
+      "description": "Specialists that were consulted"
+    },
+    "observations": {
+      "type": "object",
+      "properties": {
+        "type_check_passed": {
+          "type": "boolean"
+        },
+        "lint_passed": {
+          "type": "boolean"
+        },
+        "imports_resolved": {
+          "type": "boolean"
+        },
+        "tests_passed": {
+          "type": "boolean"
+        },
+        "tests_run": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tests_failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coverage_percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "description": "Observations from the implementation process"
+    },
+    "validation_result": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "gates": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["passed", "failed", "skipped"]
+              },
+              "details": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "description": "Validation gate results"
+    },
+    "failure_reason": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "null" }
+      ],
+      "description": "Reason for failure if status is failed or blocked"
+    },
+    "failure_analysis": {
+      "type": "object",
+      "properties": {
+        "root_cause": {
+          "type": "string"
+        },
+        "fixable_by_retry": {
+          "type": "boolean"
+        },
+        "fix_suggestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Analysis of the failure"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Implementation duration in milliseconds"
+    },
+    "attempt_number": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Which attempt this result is from"
+    },
+    "completed_at": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,479 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "codebase-profile.schema.json",
+  "title": "ORC Codebase Profile",
+  "description": "Schema for the pre-flight codebase analysis profile",
+  "type": "object",
+  "required": ["project_type", "frameworks", "conventions", "patterns", "analyzed_at"],
+  "properties": {
+    "project_type": {
+      "type": "string",
+      "enum": ["node", "python", "java", "go", "rust", "csharp", "ruby", "php", "kotlin", "swift", "typescript", "mixed", "unknown"],
+      "description": "Primary project language/platform"
+    },
+    "frameworks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Detected frameworks (e.g., express, react, prisma, django, spring)"
+    },
+    "conventions": {
+      "type": "object",
+      "properties": {
+        "naming": {
+          "type": "object",
+          "properties": {
+            "files": {
+              "type": "string",
+              "enum": ["kebab-case", "snake_case", "camelCase", "PascalCase", "mixed"],
+              "description": "File naming convention"
+            },
+            "classes": {
+              "type": "string",
+              "enum": ["PascalCase", "camelCase", "snake_case", "mixed"],
+              "description": "Class naming convention"
+            },
+            "functions": {
+              "type": "string",
+              "enum": ["camelCase", "snake_case", "PascalCase", "mixed"],
+              "description": "Function naming convention"
+            },
+            "constants": {
+              "type": "string",
+              "enum": ["SCREAMING_SNAKE", "camelCase", "PascalCase", "snake_case", "mixed"],
+              "description": "Constant naming convention"
+            },
+            "variables": {
+              "type": "string",
+              "enum": ["camelCase", "snake_case", "PascalCase", "mixed"],
+              "description": "Variable naming convention"
+            }
+          },
+          "required": ["files", "functions"]
+        },
+        "file_organization": {
+          "type": "string",
+          "enum": ["feature-based", "layer-based", "hybrid", "flat", "unknown"],
+          "description": "How files are organized in the project"
+        },
+        "test_location": {
+          "type": "string",
+          "enum": ["colocated", "separate", "both", "none"],
+          "description": "Where test files are located relative to source"
+        },
+        "import_style": {
+          "type": "string",
+          "enum": ["relative", "alias", "absolute", "mixed"],
+          "description": "How imports are structured"
+        },
+        "indentation": {
+          "type": "object",
+          "properties": {
+            "style": {
+              "type": "string",
+              "enum": ["spaces", "tabs"]
+            },
+            "size": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 8
+            }
+          }
+        },
+        "quotes": {
+          "type": "string",
+          "enum": ["single", "double", "mixed"],
+          "description": "String quote style"
+        },
+        "semicolons": {
+          "type": "boolean",
+          "description": "Whether semicolons are used (JS/TS)"
+        },
+        "trailing_commas": {
+          "type": "string",
+          "enum": ["none", "es5", "all"],
+          "description": "Trailing comma style"
+        }
+      },
+      "required": ["naming", "file_organization"]
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "runtime": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "version": { "type": "string" },
+              "purpose": { "type": "string" }
+            },
+            "required": ["name", "version"]
+          }
+        },
+        "dev": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "version": { "type": "string" },
+              "purpose": { "type": "string" }
+            },
+            "required": ["name", "version"]
+          }
+        },
+        "package_manager": {
+          "type": "string",
+          "enum": ["npm", "yarn", "pnpm", "bun", "pip", "poetry", "pipenv", "maven", "gradle", "cargo", "go", "composer", "bundler", "nuget", "unknown"],
+          "description": "Package manager in use"
+        },
+        "lock_file": {
+          "type": "string",
+          "description": "Lock file used (e.g., package-lock.json, yarn.lock)"
+        }
+      }
+    },
+    "patterns": {
+      "type": "object",
+      "properties": {
+        "data_access": {
+          "type": "string",
+          "enum": ["repository", "active-record", "direct-orm", "raw-sql", "mixed", "unknown"],
+          "description": "Data access pattern in use"
+        },
+        "error_handling": {
+          "type": "string",
+          "enum": ["try-catch", "result-type", "error-middleware", "exception-classes", "mixed", "unknown"],
+          "description": "Error handling approach"
+        },
+        "validation": {
+          "type": "string",
+          "enum": ["zod", "joi", "yup", "class-validator", "ajv", "pydantic", "marshmallow", "manual", "none", "unknown"],
+          "description": "Validation library or approach"
+        },
+        "auth": {
+          "type": "string",
+          "enum": ["jwt", "session", "oauth", "api-key", "basic", "none", "unknown"],
+          "description": "Authentication method"
+        },
+        "logging": {
+          "type": "string",
+          "enum": ["winston", "pino", "bunyan", "morgan", "console", "custom", "none", "unknown"],
+          "description": "Logging approach"
+        },
+        "config_management": {
+          "type": "string",
+          "enum": ["dotenv", "config-files", "env-vars", "secrets-manager", "mixed", "unknown"],
+          "description": "Configuration management approach"
+        },
+        "dependency_injection": {
+          "type": "boolean",
+          "description": "Whether DI pattern is used"
+        },
+        "state_management": {
+          "type": "string",
+          "description": "State management approach (for frontend)"
+        }
+      },
+      "required": ["data_access", "error_handling"]
+    },
+    "api_style": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["REST", "GraphQL", "tRPC", "gRPC", "SOAP", "mixed", "none"],
+          "description": "API format"
+        },
+        "versioning": {
+          "type": "string",
+          "enum": ["url", "header", "query", "none"],
+          "description": "API versioning strategy"
+        },
+        "error_format": {
+          "type": "object",
+          "properties": {
+            "structure": {
+              "type": "string",
+              "description": "Description of error response structure"
+            },
+            "example": {
+              "type": "object",
+              "description": "Example error response"
+            }
+          }
+        },
+        "response_envelope": {
+          "type": "boolean",
+          "description": "Whether responses are wrapped in an envelope"
+        },
+        "pagination_style": {
+          "type": "string",
+          "enum": ["offset", "cursor", "page", "none", "unknown"],
+          "description": "Pagination approach"
+        },
+        "rate_limiting": {
+          "type": "boolean",
+          "description": "Whether rate limiting is implemented"
+        }
+      }
+    },
+    "test_patterns": {
+      "type": "object",
+      "properties": {
+        "framework": {
+          "type": "string",
+          "enum": ["jest", "vitest", "mocha", "jasmine", "ava", "pytest", "unittest", "junit", "testng", "rspec", "phpunit", "go-test", "cargo-test", "none", "unknown"],
+          "description": "Test framework in use"
+        },
+        "style": {
+          "type": "string",
+          "enum": ["describe-it", "test", "class-based", "function-based", "mixed"],
+          "description": "Test writing style"
+        },
+        "mocking": {
+          "type": "string",
+          "enum": ["jest.mock", "sinon", "testdouble", "mockito", "unittest.mock", "manual", "none", "unknown"],
+          "description": "Mocking approach"
+        },
+        "assertion_style": {
+          "type": "string",
+          "enum": ["expect", "assert", "should", "chai", "mixed"],
+          "description": "Assertion style"
+        },
+        "coverage_tool": {
+          "type": "string",
+          "description": "Code coverage tool"
+        },
+        "e2e_framework": {
+          "type": "string",
+          "enum": ["playwright", "cypress", "puppeteer", "selenium", "none", "unknown"],
+          "description": "E2E testing framework"
+        },
+        "fixtures_location": {
+          "type": "string",
+          "description": "Where test fixtures/data are stored"
+        }
+      }
+    },
+    "build_config": {
+      "type": "object",
+      "properties": {
+        "build_tool": {
+          "type": "string",
+          "enum": ["webpack", "vite", "esbuild", "rollup", "parcel", "turbopack", "tsc", "babel", "make", "gradle", "maven", "cargo", "go-build", "none", "unknown"],
+          "description": "Build tool in use"
+        },
+        "bundler": {
+          "type": "string",
+          "description": "Module bundler"
+        },
+        "transpiler": {
+          "type": "string",
+          "description": "Transpiler (e.g., tsc, babel, swc)"
+        },
+        "linter": {
+          "type": "string",
+          "enum": ["eslint", "biome", "prettier", "pylint", "flake8", "rubocop", "golangci-lint", "clippy", "none", "unknown"],
+          "description": "Linting tool"
+        },
+        "formatter": {
+          "type": "string",
+          "enum": ["prettier", "biome", "black", "gofmt", "rustfmt", "rubocop", "none", "unknown"],
+          "description": "Code formatter"
+        },
+        "type_checker": {
+          "type": "string",
+          "description": "Type checking tool (e.g., tsc, mypy)"
+        },
+        "ci_platform": {
+          "type": "string",
+          "enum": ["github-actions", "gitlab-ci", "jenkins", "circleci", "travis", "azure-devops", "bitbucket", "none", "unknown"],
+          "description": "CI/CD platform"
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "encryption": {
+          "type": "object",
+          "properties": {
+            "at_rest": { "type": "boolean" },
+            "in_transit": { "type": "boolean" },
+            "algorithm": { "type": "string" }
+          }
+        },
+        "secrets_management": {
+          "type": "string",
+          "enum": ["env-vars", "vault", "aws-secrets", "azure-keyvault", "gcp-secrets", "doppler", "manual", "unknown"],
+          "description": "How secrets are managed"
+        },
+        "cors_configured": {
+          "type": "boolean",
+          "description": "Whether CORS is configured"
+        },
+        "helmet_or_equivalent": {
+          "type": "boolean",
+          "description": "Whether security headers are configured"
+        },
+        "rate_limiting": {
+          "type": "boolean",
+          "description": "Whether rate limiting is implemented"
+        },
+        "input_sanitization": {
+          "type": "boolean",
+          "description": "Whether input sanitization is implemented"
+        },
+        "csrf_protection": {
+          "type": "boolean",
+          "description": "Whether CSRF protection is implemented"
+        }
+      }
+    },
+    "database": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["postgresql", "mysql", "mongodb", "sqlite", "redis", "dynamodb", "firestore", "supabase", "planetscale", "multiple", "none", "unknown"],
+          "description": "Database type"
+        },
+        "orm": {
+          "type": "string",
+          "enum": ["prisma", "typeorm", "sequelize", "knex", "drizzle", "sqlalchemy", "django-orm", "activerecord", "gorm", "diesel", "none", "unknown"],
+          "description": "ORM in use"
+        },
+        "migrations": {
+          "type": "string",
+          "enum": ["prisma", "typeorm", "knex", "flyway", "liquibase", "alembic", "django", "activerecord", "goose", "manual", "none", "unknown"],
+          "description": "Migration tool"
+        },
+        "seeding": {
+          "type": "boolean",
+          "description": "Whether seed scripts exist"
+        },
+        "connection_pooling": {
+          "type": "boolean",
+          "description": "Whether connection pooling is configured"
+        }
+      }
+    },
+    "infrastructure": {
+      "type": "object",
+      "properties": {
+        "containerization": {
+          "type": "string",
+          "enum": ["docker", "podman", "none", "unknown"],
+          "description": "Container technology"
+        },
+        "orchestration": {
+          "type": "string",
+          "enum": ["kubernetes", "docker-compose", "docker-swarm", "ecs", "none", "unknown"],
+          "description": "Container orchestration"
+        },
+        "hosting": {
+          "type": "string",
+          "enum": ["vercel", "netlify", "aws", "gcp", "azure", "heroku", "railway", "fly", "render", "self-hosted", "unknown"],
+          "description": "Hosting platform"
+        },
+        "iac_tool": {
+          "type": "string",
+          "enum": ["terraform", "pulumi", "cdk", "cloudformation", "ansible", "none", "unknown"],
+          "description": "Infrastructure as Code tool"
+        },
+        "monitoring": {
+          "type": "string",
+          "enum": ["datadog", "newrelic", "sentry", "grafana", "cloudwatch", "none", "unknown"],
+          "description": "Monitoring solution"
+        }
+      }
+    },
+    "project_structure": {
+      "type": "object",
+      "properties": {
+        "monorepo": {
+          "type": "boolean",
+          "description": "Whether this is a monorepo"
+        },
+        "monorepo_tool": {
+          "type": "string",
+          "enum": ["turborepo", "nx", "lerna", "pnpm-workspaces", "yarn-workspaces", "none"],
+          "description": "Monorepo management tool"
+        },
+        "source_directory": {
+          "type": "string",
+          "description": "Main source directory (e.g., src, lib, app)"
+        },
+        "output_directory": {
+          "type": "string",
+          "description": "Build output directory (e.g., dist, build)"
+        },
+        "key_directories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string" },
+              "purpose": { "type": "string" }
+            },
+            "required": ["path", "purpose"]
+          },
+          "description": "Important directories and their purposes"
+        }
+      }
+    },
+    "documentation": {
+      "type": "object",
+      "properties": {
+        "readme_exists": { "type": "boolean" },
+        "api_docs": {
+          "type": "string",
+          "enum": ["swagger", "openapi", "graphql-docs", "jsdoc", "typedoc", "sphinx", "none", "unknown"],
+          "description": "API documentation tool"
+        },
+        "changelog_exists": { "type": "boolean" },
+        "contributing_guide": { "type": "boolean" },
+        "inline_comments": {
+          "type": "string",
+          "enum": ["extensive", "moderate", "minimal", "none"],
+          "description": "Level of inline code comments"
+        }
+      }
+    },
+    "analysis_metadata": {
+      "type": "object",
+      "properties": {
+        "files_scanned": {
+          "type": "integer",
+          "description": "Number of files analyzed"
+        },
+        "directories_scanned": {
+          "type": "integer",
+          "description": "Number of directories analyzed"
+        },
+        "analysis_duration_ms": {
+          "type": "integer",
+          "description": "Time taken to analyze in milliseconds"
+        },
+        "confidence": {
+          "$ref": "_definitions.schema.json#/$defs/confidence",
+          "description": "Overall confidence in analysis accuracy"
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Warnings or uncertainties from analysis"
+        }
+      }
+    },
+    "analyzed_at": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp",
+      "description": "When the analysis was performed"
+    }
+  },
+  "additionalProperties": false
+}

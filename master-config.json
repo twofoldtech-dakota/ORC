@@ -1,0 +1,119 @@
+{
+  "$schema": "./contracts/master-config.schema.json",
+  "version": "1.0.0",
+  "anti_slop_rules": {
+    "enabled": true,
+    "layout_slop": [
+      "Generic hero with centered text and single CTA",
+      "Card grid with identical card sizes and spacing",
+      "Three-column feature section with icons",
+      "Footer with 4 equal columns",
+      "Testimonial carousel with dots navigation"
+    ],
+    "styling_slop": [
+      "Default Tailwind color palette (blue-500, gray-100, etc.)",
+      "Linear gradients from purple to blue or pink to orange",
+      "rounded-lg applied uniformly to all components",
+      "Default Tailwind shadows (shadow-md, shadow-lg)",
+      "Identical padding (p-4, p-6) on unrelated components"
+    ],
+    "interaction_slop": [
+      "Hover effects that only change opacity or color",
+      "No focus states on interactive elements",
+      "Linear CSS transitions (transition-all duration-300)",
+      "No loading or skeleton states",
+      "Form validation only showing red borders"
+    ],
+    "animation_slop": [
+      "Basic fade-in on scroll",
+      "Slide-up animations on every element",
+      "Uniform animation delays (0.1s, 0.2s, 0.3s...)",
+      "No exit animations",
+      "Animations that don't respect reduced-motion"
+    ],
+    "on_detection": {
+      "action": "block_completion",
+      "message": "Slop pattern detected. Research better approaches.",
+      "require": "design_research_document"
+    },
+    "exceptions": {
+      "allow_conventional_if": "Documented justification explaining why conventional is the RIGHT choice"
+    }
+  },
+  "design_review_gate": {
+    "enabled": true,
+    "triggered_by": ["ui_component", "page", "layout", "frontend_story"],
+    "checks": {
+      "visual_hierarchy": [
+        "Clear primary, secondary, tertiary elements",
+        "Eye flow guides user to important elements",
+        "Whitespace is intentional and creates rhythm"
+      ],
+      "spacing_alignment": [
+        "All spacing from design system scale",
+        "Elements align to grid",
+        "Consistent gaps between similar elements"
+      ],
+      "typography": [
+        "Clear heading hierarchy",
+        "Readable line lengths (45-75 characters)",
+        "Appropriate line height for content type"
+      ],
+      "color_contrast": [
+        "Custom palette, not default Tailwind",
+        "WCAG AA contrast minimum",
+        "Semantic color usage"
+      ],
+      "interaction_design": [
+        "All interactive elements have hover state",
+        "All interactive elements have focus state",
+        "All interactive elements have active state",
+        "Loading states for async actions",
+        "Error and success states for forms"
+      ],
+      "animation_quality": [
+        "No linear easing",
+        "Appropriate durations (150-300ms)",
+        "Exit animations exist",
+        "Respects prefers-reduced-motion"
+      ],
+      "responsive_design": [
+        "Intentional design at each breakpoint",
+        "Touch targets 44px+ on mobile",
+        "No horizontal scroll on mobile"
+      ],
+      "dark_mode": [
+        "Intentional dark palette, not inverted",
+        "Shadows adjusted for dark",
+        "Contrast maintained"
+      ],
+      "innovation": [
+        "At least one non-generic element",
+        "Techniques from reference research incorporated",
+        "Would pass the 'not a template' test"
+      ],
+      "accessibility": [
+        "Semantic HTML structure",
+        "Keyboard fully navigable",
+        "Focus indicators visible and styled",
+        "ARIA labels where needed"
+      ]
+    },
+    "scoring": {
+      "each_check": ["pass", "fail", "needs_improvement"],
+      "overall": ["approved", "needs_revision", "blocked"]
+    },
+    "on_failure": {
+      "action": "return_to_implementer",
+      "max_revision_rounds": 2
+    }
+  },
+  "innovation_minimums": {
+    "landing_page": 7,
+    "marketing_component": 8,
+    "documentation": 6,
+    "dashboard_ui": 5,
+    "forms": 4,
+    "default": 5
+  }
+}

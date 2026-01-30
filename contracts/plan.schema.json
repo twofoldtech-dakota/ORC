@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "plan.schema.json",
+  "title": "ORC Plan",
+  "description": "Schema for the master plan containing all epics",
+  "type": "object",
+  "required": ["id", "goal", "status", "epics", "created_at"],
+  "properties": {
+    "id": {
+      "$ref": "_definitions.schema.json#/$defs/uuid"
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Original user goal"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending_approval", "approved", "in_progress", "completed", "cancelled"],
+      "description": "Overall plan status"
+    },
+    "epics": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/epicId"
+      },
+      "description": "List of epic IDs in priority order"
+    },
+    "total_features": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of features across all epics"
+    },
+    "total_stories": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of stories across all epics"
+    },
+    "patterns_matched": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Number of patterns matched to stories"
+    },
+    "estimated_parallel_groups": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Estimated number of parallel execution groups"
+    },
+    "codebase_profile_id": {
+      "type": "string",
+      "description": "Reference to the codebase_profile.json used for planning"
+    },
+    "codebase_profile_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ],
+      "description": "When the codebase profile was generated"
+    },
+    "codebase_summary": {
+      "type": "object",
+      "properties": {
+        "project_type": {
+          "type": "string"
+        },
+        "frameworks": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "conventions": {
+          "type": "object",
+          "properties": {
+            "file_naming": { "type": "string" },
+            "file_organization": { "type": "string" }
+          }
+        },
+        "key_patterns": {
+          "type": "object",
+          "properties": {
+            "data_access": { "type": "string" },
+            "error_handling": { "type": "string" },
+            "validation": { "type": "string" }
+          }
+        },
+        "test_framework": {
+          "type": "string"
+        }
+      },
+      "description": "Summary of codebase profile for quick reference"
+    },
+    "created_at": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    },
+    "approved_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    },
+    "completed_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

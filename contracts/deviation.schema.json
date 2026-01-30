@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "deviation.schema.json",
+  "title": "ORC Deviation",
+  "description": "Schema for tracking deviations from suggested approaches",
+  "type": "object",
+  "required": ["id", "story_id", "suggested_approach", "actual_approach", "reason", "category", "impact", "requires_review"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^dev_[0-9]+$",
+      "description": "Unique deviation identifier"
+    },
+    "story_id": {
+      "$ref": "_definitions.schema.json#/$defs/storyId"
+    },
+    "suggested_approach": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The originally suggested approach"
+    },
+    "actual_approach": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What was actually implemented"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Justification for the deviation"
+    },
+    "category": {
+      "$ref": "_definitions.schema.json#/$defs/deviationCategory"
+    },
+    "impact": {
+      "$ref": "_definitions.schema.json#/$defs/impact"
+    },
+    "requires_review": {
+      "type": "boolean",
+      "description": "Whether this deviation needs user review"
+    },
+    "reviewed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the deviation has been reviewed"
+    },
+    "approved": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the deviation was approved"
+    },
+    "approved_by": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "null" }
+      ],
+      "description": "Who approved the deviation"
+    },
+    "confidence_impact": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 0,
+      "default": -0.05,
+      "description": "Impact on overall confidence (negative value)"
+    },
+    "created_at": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    },
+    "reviewed_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

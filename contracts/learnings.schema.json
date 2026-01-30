@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "learnings.schema.json",
+  "title": "ORC Learnings",
+  "description": "Schema for the accumulated learnings database",
+  "type": "object",
+  "required": ["version", "last_updated"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0",
+      "description": "Schema version"
+    },
+    "last_updated": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    },
+    "success_patterns": {
+      "type": "array",
+      "items": {
+        "$ref": "pattern.schema.json"
+      },
+      "default": [],
+      "description": "Patterns that have worked well"
+    },
+    "anti_patterns": {
+      "type": "array",
+      "items": {
+        "$ref": "pattern.schema.json"
+      },
+      "default": [],
+      "description": "Patterns to avoid"
+    },
+    "user_preferences": {
+      "type": "object",
+      "properties": {
+        "coding_style": {
+          "type": "object",
+          "properties": {
+            "indentation": {
+              "type": "string"
+            },
+            "quotes": {
+              "type": "string",
+              "enum": ["single", "double"]
+            },
+            "semicolons": {
+              "type": "boolean"
+            },
+            "trailing_commas": {
+              "type": "boolean"
+            }
+          }
+        },
+        "testing": {
+          "type": "object",
+          "properties": {
+            "framework": {
+              "type": "string"
+            },
+            "coverage_threshold": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          }
+        },
+        "libraries": {
+          "type": "object",
+          "properties": {
+            "preferred": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "avoided": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "default": {},
+      "description": "Detected user preferences"
+    },
+    "project_knowledge": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "framework": {
+          "type": "string"
+        },
+        "test_framework": {
+          "type": "string"
+        },
+        "build_tool": {
+          "type": "string"
+        },
+        "package_manager": {
+          "type": "string"
+        },
+        "discovered_patterns": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "default": {},
+      "description": "Project-specific knowledge"
+    },
+    "technique_stats": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "uses": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "successes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "failures": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "default": {},
+      "description": "Statistics on techniques used"
+    },
+    "deviation_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "story_id": {
+            "$ref": "_definitions.schema.json#/$defs/storyId"
+          },
+          "timestamp": {
+            "$ref": "_definitions.schema.json#/$defs/timestamp"
+          },
+          "suggested": {
+            "type": "string"
+          },
+          "actual": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "impact": {
+            "$ref": "_definitions.schema.json#/$defs/impact"
+          },
+          "reviewed": {
+            "type": "boolean"
+          },
+          "approved": {
+            "type": "boolean"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": ["successful", "failed", "unknown"]
+          }
+        }
+      },
+      "default": [],
+      "description": "History of all deviations"
+    },
+    "blocked_stories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "story_id": {
+            "$ref": "_definitions.schema.json#/$defs/storyId"
+          },
+          "description": {
+            "type": "string"
+          },
+          "blocked_at": {
+            "$ref": "_definitions.schema.json#/$defs/timestamp"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "attempts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "failure_details": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unblocked": {
+            "type": "boolean",
+            "default": false
+          },
+          "unblocked_at": {
+            "oneOf": [
+              { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+              { "type": "null" }
+            ]
+          }
+        }
+      },
+      "default": [],
+      "description": "Stories that failed after max attempts"
+    }
+  },
+  "additionalProperties": false
+}

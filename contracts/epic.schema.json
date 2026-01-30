@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "epic.schema.json",
+  "title": "ORC Epic",
+  "description": "Schema for an Epic - a self-contained project milestone",
+  "type": "object",
+  "required": ["id", "name", "description", "priority", "status", "features", "created_at"],
+  "properties": {
+    "id": {
+      "$ref": "_definitions.schema.json#/$defs/epicId"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable epic name"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Detailed description of the epic's purpose and scope"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Execution priority (1 = highest)"
+    },
+    "status": {
+      "$ref": "_definitions.schema.json#/$defs/status"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/featureId"
+      },
+      "description": "List of feature IDs in this epic"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/acceptanceCriterion"
+      },
+      "description": "Epic-level acceptance criteria"
+    },
+    "patterns_used": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/patternId"
+      },
+      "description": "Patterns used in this epic"
+    },
+    "deviations_count": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Number of deviations in this epic"
+    },
+    "created_at": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    },
+    "approved_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ],
+      "description": "When the epic was approved for execution"
+    },
+    "started_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ],
+      "description": "When execution started"
+    },
+    "completed_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ],
+      "description": "When execution completed"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total execution duration in milliseconds"
+    }
+  },
+  "additionalProperties": false
+}

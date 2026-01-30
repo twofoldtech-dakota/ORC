@@ -1,0 +1,158 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Interaction Requirements",
+  "type": "object",
+  "description": "Schema defining required interaction states for UI components",
+  "properties": {
+    "buttons": {
+      "type": "object",
+      "properties": {
+        "hover": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Scale, shadow, or background shift - NOT just color change" },
+            "reference": { "type": "string", "const": "Linear uses scale(1.02) with spring easing" }
+          }
+        },
+        "active": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Pressed state with scale(0.98) or shadow reduction" }
+          }
+        },
+        "focus": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Visible focus ring, 2px offset, brand color or white" }
+          }
+        },
+        "loading": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Spinner with personality OR skeleton pulse" }
+          }
+        },
+        "disabled": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Visually distinct, cursor-not-allowed, reduced opacity" }
+          }
+        }
+      }
+    },
+    "cards": {
+      "type": "object",
+      "properties": {
+        "hover": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "options": {
+              "type": "array",
+              "items": { "type": "string" },
+              "const": ["Elevation change", "Border highlight", "Subtle scale", "Background shift"]
+            }
+          }
+        },
+        "click_feedback": {
+          "type": "object",
+          "properties": {
+            "required_if": { "type": "string", "const": "card is clickable" },
+            "minimum": { "type": "string", "const": "Immediate visual acknowledgment" }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "focus": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Ring or border change, label animation if floating" }
+          }
+        },
+        "filled": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Visual distinction between empty and filled" }
+          }
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Border color, error message with icon, shake animation optional" }
+          }
+        },
+        "success": {
+          "type": "object",
+          "properties": {
+            "required_if": { "type": "string", "const": "form has success state" },
+            "minimum": { "type": "string", "const": "Check icon, green accent, micro-celebration" }
+          }
+        }
+      }
+    },
+    "navigation": {
+      "type": "object",
+      "properties": {
+        "active_state": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Clear indication of current page/section" }
+          }
+        },
+        "hover": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean", "const": true },
+            "minimum": { "type": "string", "const": "Background shift or underline animation" }
+          }
+        },
+        "mobile_menu": {
+          "type": "object",
+          "properties": {
+            "required_if": { "type": "string", "const": "responsive" },
+            "minimum": { "type": "string", "const": "Smooth open/close animation, not instant" }
+          }
+        }
+      }
+    },
+    "page_transitions": {
+      "type": "object",
+      "properties": {
+        "required_for": {
+          "type": "array",
+          "items": { "type": "string" },
+          "const": ["SPAs", "multi-page apps with client routing"]
+        },
+        "minimum": { "type": "string", "const": "Fade or slide, 200-300ms, ease-out" }
+      }
+    },
+    "scroll_effects": {
+      "type": "object",
+      "properties": {
+        "required_for": {
+          "type": "array",
+          "items": { "type": "string" },
+          "const": ["landing pages", "marketing pages"]
+        },
+        "options": {
+          "type": "array",
+          "items": { "type": "string" },
+          "const": ["Parallax", "Reveal on scroll", "Sticky elements", "Progress indicators"]
+        },
+        "performance": { "type": "string", "const": "Must not cause layout shift or jank" }
+      }
+    }
+  }
+}

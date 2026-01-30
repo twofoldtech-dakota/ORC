@@ -1,0 +1,65 @@
+{
+  "hooks": [
+    {
+      "event": "Stop",
+      "command": "./scripts/graceful-shutdown.sh",
+      "timeout": 30000,
+      "description": "Saves checkpoint and state on graceful stop"
+    }
+  ],
+  "orcInternal": {
+    "description": "ORC-specific events triggered internally by the Orchestrator agent during execution",
+    "events": {
+      "story_start": {
+        "description": "Triggered when a story begins execution",
+        "environment": ["ORC_SESSION_ID", "ORC_PHASE", "ORC_EPIC_ID", "ORC_FEATURE_ID", "ORC_STORY_ID", "ORC_STATE_DIR"]
+      },
+      "story_complete": {
+        "description": "Triggered when a story completes (success or failure)",
+        "script": "scripts/validate-story.sh",
+        "timeout_ms": 60000,
+        "on_failure": "warn"
+      },
+      "story_blocked": {
+        "description": "Triggered when a story is marked as blocked",
+        "environment": ["ORC_SESSION_ID", "ORC_STORY_ID", "ORC_STATE_DIR"]
+      },
+      "feature_start": {
+        "description": "Triggered when a feature begins execution",
+        "environment": ["ORC_SESSION_ID", "ORC_PHASE", "ORC_EPIC_ID", "ORC_FEATURE_ID", "ORC_STATE_DIR"]
+      },
+      "feature_complete": {
+        "description": "Triggered when all stories in a feature complete",
+        "script": "scripts/run-tests.sh",
+        "timeout_ms": 300000,
+        "on_failure": "block"
+      },
+      "epic_start": {
+        "description": "Triggered when an epic begins execution",
+        "environment": ["ORC_SESSION_ID", "ORC_PHASE", "ORC_EPIC_ID", "ORC_STATE_DIR"]
+      },
+      "epic_complete": {
+        "description": "Triggered when all features in an epic complete",
+        "script": "scripts/extract-learnings.sh",
+        "timeout_ms": 120000,
+        "on_failure": "warn"
+      },
+      "deviation_recorded": {
+        "description": "Triggered when a deviation from suggested approach is recorded",
+        "environment": ["ORC_SESSION_ID", "ORC_STORY_ID", "ORC_STATE_DIR"]
+      },
+      "checkpoint_saved": {
+        "description": "Triggered when a checkpoint is saved",
+        "environment": ["ORC_SESSION_ID", "ORC_PHASE", "ORC_STATE_DIR"]
+      }
+    },
+    "environment": {
+      "ORC_SESSION_ID": "Current session UUID",
+      "ORC_PHASE": "Current phase (plan, execute, review, learn)",
+      "ORC_EPIC_ID": "Current epic ID",
+      "ORC_FEATURE_ID": "Current feature ID",
+      "ORC_STORY_ID": "Current story ID",
+      "ORC_STATE_DIR": "Path to .orc directory"
+    }
+  }
+}

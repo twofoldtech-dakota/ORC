@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "story.schema.json",
+  "title": "ORC Story",
+  "description": "Schema for a Story - an atomic task with clear acceptance criteria",
+  "type": "object",
+  "required": ["id", "feature_id", "description", "acceptance_criteria", "status"],
+  "properties": {
+    "id": {
+      "$ref": "_definitions.schema.json#/$defs/storyId"
+    },
+    "feature_id": {
+      "$ref": "_definitions.schema.json#/$defs/featureId"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Description of what needs to be implemented"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/acceptanceCriterion"
+      },
+      "minItems": 1,
+      "description": "Specific criteria that must be met"
+    },
+    "suggested_approach": {
+      "type": "object",
+      "properties": {
+        "pattern_id": {
+          "$ref": "_definitions.schema.json#/$defs/patternId"
+        },
+        "description": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string",
+          "enum": ["learnings", "manual", "generated"]
+        },
+        "confidence": {
+          "$ref": "_definitions.schema.json#/$defs/confidence"
+        }
+      },
+      "description": "Suggested implementation approach"
+    },
+    "files_to_create": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/filePath"
+      },
+      "default": [],
+      "description": "New files to be created"
+    },
+    "files_to_modify": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/filePath"
+      },
+      "default": [],
+      "description": "Existing files to be modified"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/storyId"
+      },
+      "default": [],
+      "description": "Story IDs that must complete before this story"
+    },
+    "estimated_complexity": {
+      "$ref": "_definitions.schema.json#/$defs/complexity"
+    },
+    "specialists_needed": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/specialistType"
+      },
+      "default": [],
+      "description": "Specialist agents needed for this story"
+    },
+    "status": {
+      "$ref": "_definitions.schema.json#/$defs/status"
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Number of execution attempts"
+    },
+    "max_attempts": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 3,
+      "description": "Maximum allowed attempts before blocking"
+    },
+    "result": {
+      "oneOf": [
+        { "$ref": "task-result.schema.json" },
+        { "type": "null" }
+      ],
+      "description": "Execution result when complete"
+    },
+    "deviations": {
+      "type": "array",
+      "items": {
+        "$ref": "deviation.schema.json"
+      },
+      "default": [],
+      "description": "Deviations from suggested approach"
+    },
+    "created_at": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    },
+    "started_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    },
+    "completed_at": {
+      "oneOf": [
+        { "$ref": "_definitions.schema.json#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

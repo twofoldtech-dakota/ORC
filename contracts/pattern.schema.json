@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pattern.schema.json",
+  "title": "ORC Pattern",
+  "description": "Schema for learned success patterns and anti-patterns",
+  "type": "object",
+  "required": ["id", "task_type", "approach", "applicable_when", "confidence", "tags"],
+  "properties": {
+    "id": {
+      "$ref": "_definitions.schema.json#/$defs/patternId"
+    },
+    "task_type": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Type of task this pattern applies to"
+    },
+    "approach": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Description of the approach or anti-pattern"
+    },
+    "applicable_when": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Keywords that trigger this pattern match"
+    },
+    "code_example": {
+      "type": "string",
+      "description": "Example code demonstrating the pattern"
+    },
+    "why_bad": {
+      "type": "string",
+      "description": "For anti-patterns: why this should be avoided"
+    },
+    "alternative": {
+      "$ref": "_definitions.schema.json#/$defs/patternId",
+      "description": "For anti-patterns: ID of the recommended pattern"
+    },
+    "success_count": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Number of successful uses"
+    },
+    "failure_count": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Number of failed uses"
+    },
+    "last_used": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    },
+    "confidence": {
+      "$ref": "_definitions.schema.json#/$defs/confidence"
+    },
+    "base_confidence": {
+      "$ref": "_definitions.schema.json#/$defs/confidence",
+      "description": "Original confidence before decay"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Categorization tags"
+    },
+    "pinned": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, pattern never decays"
+    },
+    "is_anti_pattern": {
+      "type": "boolean",
+      "default": false,
+      "description": "True if this is an anti-pattern"
+    },
+    "created_at": {
+      "$ref": "_definitions.schema.json#/$defs/timestamp"
+    },
+    "extracted_from": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.schema.json#/$defs/storyId"
+      },
+      "description": "Stories this pattern was extracted from"
+    }
+  },
+  "additionalProperties": false
+}
