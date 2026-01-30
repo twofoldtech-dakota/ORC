@@ -451,6 +451,7 @@ ORC/
 
 | Document | Description |
 |----------|-------------|
+| [Installation](docs/INSTALLATION.md) | Marketplace install guide |
 | [Architecture](docs/ARCHITECTURE.md) | Deep dive into agent system |
 | [Commands](docs/COMMANDS.md) | Complete command reference |
 | [Pattern Library](docs/PATTERN-LIBRARY.md) | Available implementation patterns |
