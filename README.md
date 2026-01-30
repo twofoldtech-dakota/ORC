@@ -11,7 +11,7 @@
 **One prompt. Nineteen agents. Production-ready code.**
 
 ```bash
-claude plugins add twofoldtech-dakota/ORC
+/plugin marketplace add twofoldtech-dakota/ORC
 ```
 
 [Installation](#-installation) • [Quick Start](#-quick-start) • [Commands](#-commands) • [Architecture](#-architecture) • [Documentation](#-documentation)
@@ -42,40 +42,51 @@ ORC transforms high-level goals into complete, tested implementations. You descr
 
 ### Prerequisites
 
-- [Claude Code CLI](https://docs.anthropic.com/claude-code) installed and authenticated
-- Git
-
-### Install the Plugin
+[Claude Code CLI](https://docs.anthropic.com/claude-code) installed and authenticated.
 
 ```bash
-# Install ORC from the plugin registry
-claude plugins add twofoldtech-dakota/ORC
-
-# Verify installation
-claude plugins list
+# Verify Claude Code is installed
+claude --version
 ```
 
-### Manual Installation
+### Install from Marketplace
+
+Start Claude Code and run these commands:
 
 ```bash
-# Clone the repository
-git clone https://github.com/twofoldtech-dakota/ORC.git ~/.claude/plugins/orc
+# Add the ORC marketplace
+/plugin marketplace add twofoldtech-dakota/ORC
 
-# Register the plugin
-claude plugins link ~/.claude/plugins/orc
+# Install the plugin
+/plugin install orc@orc-marketplace
+```
+
+Or use interactive discovery:
+```bash
+/plugin discover
 ```
 
 ### Verify Setup
 
 ```bash
-# Check ORC is available
-claude
-> /orc status
+/orc status
+```
 
-# Expected output:
-# 📊 ORC Status
-# No active session.
-# Run /orc plan <goal> to start a new session.
+Expected output:
+```
+📊 ORC Status
+No active session.
+Run /orc plan <goal> to start.
+```
+
+### Updating & Uninstalling
+
+```bash
+# Update the marketplace
+/plugin marketplace update orc-marketplace
+
+# Uninstall
+/plugin uninstall orc@orc-marketplace
 ```
 
 ---
@@ -391,28 +402,23 @@ confidence = base_confidence × recency_factor × success_factor
 
 ```
 ORC/
-├── .claude-plugin/              # Claude Code plugin package
-│   ├── plugin.json              # Plugin manifest
-│   ├── skills/orc/SKILL.md      # Skill definition
-│   ├── agents/                  # Agent definitions (19 files)
-│   ├── commands/                # Command definitions (13 files)
-│   └── hooks/hooks.json         # Lifecycle hooks
-│
-├── contracts/                   # JSON Schema definitions
-│   ├── epic.schema.json
-│   ├── feature.schema.json
-│   ├── story.schema.json
-│   ├── design-system.schema.json
-│   └── ...
-│
-├── patterns/                    # Implementation patterns
-│   ├── frontend/
-│   │   ├── _references/         # Linear, Vercel, Stripe, Remotion
-│   │   ├── components/
-│   │   └── interactions/
-│   ├── api/
-│   ├── auth/
-│   └── database/
+├── .claude-plugin/
+│   └── marketplace.json         # Marketplace catalog
+├── plugins/
+│   └── orc/                     # ORC plugin
+│       ├── .claude-plugin/
+│       │   └── plugin.json      # Plugin manifest
+│       ├── skills/orc/SKILL.md  # Skill definition
+│       ├── agents/              # Agent definitions (19 files)
+│       ├── commands/            # Command definitions (13 files)
+│       ├── hooks/hooks.json     # Lifecycle hooks
+│       ├── contracts/           # JSON Schema definitions
+│       ├── patterns/            # Implementation patterns
+│       │   ├── frontend/
+│       │   ├── api/
+│       │   ├── auth/
+│       │   └── database/
+│       └── docs/                # Documentation
 │
 └── master-config.json           # Quality rules & thresholds
 ```
@@ -451,10 +457,10 @@ ORC/
 
 | Document | Description |
 |----------|-------------|
-| [Architecture](docs/ARCHITECTURE.md) | Deep dive into agent system |
-| [Commands](docs/COMMANDS.md) | Complete command reference |
-| [Pattern Library](docs/PATTERN-LIBRARY.md) | Available implementation patterns |
-| [Creating Specialists](docs/CREATING-SPECIALISTS.md) | Guide to adding new agents |
+| [Architecture](plugins/orc/docs/ARCHITECTURE.md) | Deep dive into agent system |
+| [Commands](plugins/orc/docs/COMMANDS.md) | Complete command reference |
+| [Pattern Library](plugins/orc/docs/PATTERN-LIBRARY.md) | Available implementation patterns |
+| [Creating Specialists](plugins/orc/docs/CREATING-SPECIALISTS.md) | Guide to adding new agents |
 
 ---
 
@@ -464,7 +470,7 @@ ORC/
 
 ```bash
 # Create new pattern
-patterns/{category}/{pattern-name}.md
+plugins/orc/patterns/{category}/{pattern-name}.md
 
 # Include:
 # - Reference sources
@@ -477,7 +483,7 @@ patterns/{category}/{pattern-name}.md
 
 ```bash
 # Create new specialist
-.claude-plugin/agents/{specialist-name}.md
+plugins/orc/agents/{specialist-name}.md
 
 # Required frontmatter:
 # ---

@@ -12,25 +12,25 @@
 - [x] Integration notes for Implementer agent
 
 ### ✅ 2. Contract Schemas
-- [x] Created `contracts/design-system.schema.json`
-- [x] Created `contracts/innovation-assessment.schema.json`
-- [x] Created `contracts/interaction-requirements.schema.json`
+- [x] Created `plugins/orc/contracts/design-system.schema.json`
+- [x] Created `plugins/orc/contracts/innovation-assessment.schema.json`
+- [x] Created `plugins/orc/contracts/interaction-requirements.schema.json`
 - [x] All schemas follow JSON Schema Draft-07 format
 
 ### ✅ 3. Frontend Reference Patterns
-- [x] Created `patterns/frontend/_references/linear-patterns.md`
-- [x] Created `patterns/frontend/_references/remotion-patterns.md`
-- [x] Created `patterns/frontend/_references/vercel-patterns.md`
-- [x] Created `patterns/frontend/_references/stripe-patterns.md`
-- [x] Created `patterns/frontend/_references/animation-references.md`
+- [x] Created `plugins/orc/patterns/frontend/_references/linear-patterns.md`
+- [x] Created `plugins/orc/patterns/frontend/_references/remotion-patterns.md`
+- [x] Created `plugins/orc/patterns/frontend/_references/vercel-patterns.md`
+- [x] Created `plugins/orc/patterns/frontend/_references/stripe-patterns.md`
+- [x] Created `plugins/orc/patterns/frontend/_references/animation-references.md`
 - [x] All include techniques to adopt and code examples
 
 ### ✅ 4. Component Pattern Examples
-- [x] Created `patterns/frontend/components/buttons/primary-button.md`
-- [x] Created `patterns/frontend/components/cards/interactive-card.md`
-- [x] Created `patterns/frontend/components/forms/text-input.md`
-- [x] Created `patterns/frontend/interactions/hover-effects.md`
-- [x] Created `patterns/frontend/interactions/page-transitions.md`
+- [x] Created `plugins/orc/patterns/frontend/components/buttons/primary-button.md`
+- [x] Created `plugins/orc/patterns/frontend/components/cards/interactive-card.md`
+- [x] Created `plugins/orc/patterns/frontend/components/forms/text-input.md`
+- [x] Created `plugins/orc/patterns/frontend/interactions/hover-effects.md`
+- [x] Created `plugins/orc/patterns/frontend/interactions/page-transitions.md`
 - [x] All include reference sources, states, and code examples
 
 ### ✅ 5. Master Configuration
@@ -127,26 +127,26 @@
 - `agents/specialists/design-researcher.md`
 
 ### New Contracts
-- `contracts/design-system.schema.json`
-- `contracts/innovation-assessment.schema.json`
-- `contracts/interaction-requirements.schema.json`
+- `plugins/orc/contracts/design-system.schema.json`
+- `plugins/orc/contracts/innovation-assessment.schema.json`
+- `plugins/orc/contracts/interaction-requirements.schema.json`
 
 ### New Configuration
 - `master-config.json`
 
 ### New Reference Patterns (5)
-- `patterns/frontend/_references/linear-patterns.md`
-- `patterns/frontend/_references/remotion-patterns.md`
-- `patterns/frontend/_references/vercel-patterns.md`
-- `patterns/frontend/_references/stripe-patterns.md`
-- `patterns/frontend/_references/animation-references.md`
+- `plugins/orc/patterns/frontend/_references/linear-patterns.md`
+- `plugins/orc/patterns/frontend/_references/remotion-patterns.md`
+- `plugins/orc/patterns/frontend/_references/vercel-patterns.md`
+- `plugins/orc/patterns/frontend/_references/stripe-patterns.md`
+- `plugins/orc/patterns/frontend/_references/animation-references.md`
 
 ### New Component Patterns (5)
-- `patterns/frontend/components/buttons/primary-button.md`
-- `patterns/frontend/components/cards/interactive-card.md`
-- `patterns/frontend/components/forms/text-input.md`
-- `patterns/frontend/interactions/hover-effects.md`
-- `patterns/frontend/interactions/page-transitions.md`
+- `plugins/orc/patterns/frontend/components/buttons/primary-button.md`
+- `plugins/orc/patterns/frontend/components/cards/interactive-card.md`
+- `plugins/orc/patterns/frontend/components/forms/text-input.md`
+- `plugins/orc/patterns/frontend/interactions/hover-effects.md`
+- `plugins/orc/patterns/frontend/interactions/page-transitions.md`
 
 ### Modified Files (4)
 - `agents/core/implementer.md`
