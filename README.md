@@ -42,40 +42,50 @@ ORC transforms high-level goals into complete, tested implementations. You descr
 
 ### Prerequisites
 
-- [Claude Code CLI](https://docs.anthropic.com/claude-code) installed and authenticated
-- Git
-
-### Install the Plugin
+[Claude Code CLI](https://docs.anthropic.com/claude-code) installed and authenticated.
 
 ```bash
-# Install ORC from the plugin registry
+# Verify Claude Code is installed
+claude --version
+```
+
+### Install from Marketplace
+
+```bash
+# Install ORC from Claude Code marketplace
 claude plugins add twofoldtech-dakota/ORC
 
 # Verify installation
 claude plugins list
 ```
 
-### Manual Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/twofoldtech-dakota/ORC.git ~/.claude/plugins/orc
-
-# Register the plugin
-claude plugins link ~/.claude/plugins/orc
+You should see:
+```
+orc (v1.0.0) - Multi-Agent Orchestration System
 ```
 
 ### Verify Setup
 
 ```bash
-# Check ORC is available
 claude
 > /orc status
+```
 
-# Expected output:
-# 📊 ORC Status
-# No active session.
-# Run /orc plan <goal> to start a new session.
+Expected output:
+```
+📊 ORC Status
+No active session.
+Run /orc plan <goal> to start.
+```
+
+### Updating & Uninstalling
+
+```bash
+# Update to latest version
+claude plugins update orc
+
+# Uninstall
+claude plugins remove orc
 ```
 
 ---
@@ -451,7 +461,6 @@ ORC/
 
 | Document | Description |
 |----------|-------------|
-| [Installation](docs/INSTALLATION.md) | Marketplace install guide |
 | [Architecture](docs/ARCHITECTURE.md) | Deep dive into agent system |
 | [Commands](docs/COMMANDS.md) | Complete command reference |
 | [Pattern Library](docs/PATTERN-LIBRARY.md) | Available implementation patterns |
