@@ -7,7 +7,30 @@
       "displayName": "ORC - Multi-Agent Orchestration System",
       "version": "1.0.0",
       "description": "Autonomous multi-agent system that transforms goals into tested implementations through Epic/Feature/Story hierarchy with quality gates",
-      "path": ".claude-plugin"
+      "author": {
+        "name": "Dakota Smith"
+      },
+      "repository": "https://github.com/twofoldtech-dakota/ORC",
+      "license": "MIT",
+      "keywords": [
+        "orchestration",
+        "multi-agent",
+        "autonomous",
+        "code-generation",
+        "planning",
+        "implementation"
+      ],
+      "path": ".claude-plugin",
+      "skills": [
+        "skills/orc/SKILL.md"
+      ],
+      "agents": [
+        "agents/*.md"
+      ],
+      "commands": [
+        "commands/*.md"
+      ],
+      "hooks": "hooks/hooks.json"
     }
   ]
 }
