@@ -14,5 +14,9 @@
     "code-generation",
     "planning",
     "implementation"
+  ],
+  "skills": [
+    "skills/orc/SKILL.md",
+    "skills/remotion/SKILL.md"
   ]
 }
