@@ -403,27 +403,22 @@ confidence = base_confidence × recency_factor × success_factor
 ```
 ORC/
 ├── .claude-plugin/              # Claude Code plugin package
+│   ├── marketplace.json         # Marketplace catalog
 │   ├── plugin.json              # Plugin manifest
 │   ├── skills/orc/SKILL.md      # Skill definition
 │   ├── agents/                  # Agent definitions (19 files)
 │   ├── commands/                # Command definitions (13 files)
-│   └── hooks/hooks.json         # Lifecycle hooks
-│
-├── contracts/                   # JSON Schema definitions
-│   ├── epic.schema.json
-│   ├── feature.schema.json
-│   ├── story.schema.json
-│   ├── design-system.schema.json
-│   └── ...
-│
-├── patterns/                    # Implementation patterns
-│   ├── frontend/
-│   │   ├── _references/         # Linear, Vercel, Stripe, Remotion
-│   │   ├── components/
-│   │   └── interactions/
-│   ├── api/
-│   ├── auth/
-│   └── database/
+│   ├── hooks/hooks.json         # Lifecycle hooks
+│   ├── contracts/               # JSON Schema definitions
+│   │   ├── epic.schema.json
+│   │   ├── story.schema.json
+│   │   └── ...
+│   ├── patterns/                # Implementation patterns
+│   │   ├── frontend/
+│   │   ├── api/
+│   │   ├── auth/
+│   │   └── database/
+│   └── docs/                    # Documentation
 │
 └── master-config.json           # Quality rules & thresholds
 ```
@@ -462,10 +457,10 @@ ORC/
 
 | Document | Description |
 |----------|-------------|
-| [Architecture](docs/ARCHITECTURE.md) | Deep dive into agent system |
-| [Commands](docs/COMMANDS.md) | Complete command reference |
-| [Pattern Library](docs/PATTERN-LIBRARY.md) | Available implementation patterns |
-| [Creating Specialists](docs/CREATING-SPECIALISTS.md) | Guide to adding new agents |
+| [Architecture](.claude-plugin/docs/ARCHITECTURE.md) | Deep dive into agent system |
+| [Commands](.claude-plugin/docs/COMMANDS.md) | Complete command reference |
+| [Pattern Library](.claude-plugin/docs/PATTERN-LIBRARY.md) | Available implementation patterns |
+| [Creating Specialists](.claude-plugin/docs/CREATING-SPECIALISTS.md) | Guide to adding new agents |
 
 ---
 
@@ -475,7 +470,7 @@ ORC/
 
 ```bash
 # Create new pattern
-patterns/{category}/{pattern-name}.md
+.claude-plugin/patterns/{category}/{pattern-name}.md
 
 # Include:
 # - Reference sources

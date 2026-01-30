@@ -69,11 +69,11 @@ Any security considerations.
 ## Creating Patterns
 
 ### File Location
-Place patterns in `patterns/<category>/`:
-- `patterns/auth/` - Authentication patterns
-- `patterns/api/` - API patterns
-- `patterns/database/` - Database patterns
-- `patterns/testing/` - Testing patterns
+Place patterns in `.claude-plugin/patterns/<category>/`:
+- `.claude-plugin/patterns/auth/` - Authentication patterns
+- `.claude-plugin/patterns/api/` - API patterns
+- `.claude-plugin/patterns/database/` - Database patterns
+- `.claude-plugin/patterns/testing/` - Testing patterns
 
 ### Required Fields
 
@@ -181,7 +181,7 @@ success_factor = success_count / (success_count + failure_count)
 
 ### Adding New Categories
 
-1. Create directory: `patterns/<category>/`
+1. Create directory: `.claude-plugin/patterns/<category>/`
 2. Add pattern files
 3. Update documentation
 
@@ -212,7 +212,7 @@ When approaches change:
 
 1. Create file:
 ```bash
-touch patterns/api/rate-limiting.md
+touch .claude-plugin/patterns/api/rate-limiting.md
 ```
 
 2. Write pattern:

@@ -47,8 +47,8 @@ ORC/
 │   ├── analyze.md
 │   ├── plan.md
 │   ├── ... (13 total)
-├── contracts/                # UNCHANGED
-├── patterns/                 # UNCHANGED
+├── .claude-plugin/contracts/                # UNCHANGED
+├── .claude-plugin/patterns/                 # UNCHANGED
 ├── docs/                     # UNCHANGED
 ├── hooks/
 │   ├── hooks.json            # UPDATE: Add Claude Code events
@@ -189,7 +189,7 @@ spawned_by: [implementer, planner]           # Names, not paths ✓
 
 **Contract references remain valid** - agents reference contracts by path from repo root:
 ```markdown
-{ "$ref": "contracts/story.schema.json" }  # Still valid ✓
+{ "$ref": ".claude-plugin/contracts/story.schema.json" }  # Still valid ✓
 ```
 
 ### Phase 5: Add Command Frontmatter
@@ -307,8 +307,8 @@ rm SKILL.md
 | Reference Type | Example | Why It Works |
 |----------------|---------|--------------|
 | Agent spawning | `can_spawn: [analyzer, planner]` | Uses names, not paths |
-| Contract refs | `"$ref": "contracts/story.schema.json"` | Path from repo root unchanged |
-| Pattern refs | `Read patterns/auth/jwt-tokens.md` | Path from repo root unchanged |
+| Contract refs | `"$ref": ".claude-plugin/contracts/story.schema.json"` | Path from repo root unchanged |
+| Pattern refs | `Read .claude-plugin/patterns/auth/jwt-tokens.md` | Path from repo root unchanged |
 | Hook scripts | `hooks/scripts/validate-story.sh` | Path from repo root unchanged |
 | Runtime dir | `.orc/plan/state.json` | Created at repo root unchanged |
 
@@ -347,8 +347,8 @@ rm SKILL.md
 - [ ] `/orc clear` - Resets state, preserves learnings
 
 ### Reference Validation
-- [ ] Agents can read `contracts/*.json` schemas
-- [ ] Agents can read `patterns/**/*.md` files
+- [ ] Agents can read `.claude-plugin/contracts/*.json` schemas
+- [ ] Agents can read `.claude-plugin/patterns/**/*.md` files
 - [ ] Hooks scripts execute from `hooks/scripts/`
 - [ ] Runtime state saves to `.orc/`
 
@@ -400,9 +400,9 @@ rm SKILL.md
 ### Unchanged
 | Directory | Contents |
 |-----------|----------|
-| `contracts/` | All 13 JSON schemas |
-| `patterns/` | All pattern files |
-| `docs/` | All documentation |
+| `.claude-plugin/contracts/` | All 13 JSON schemas |
+| `.claude-plugin/patterns/` | All pattern files |
+| `.claude-plugin/docs/` | All documentation |
 | `hooks/scripts/` | Existing hook scripts |
 
 ---

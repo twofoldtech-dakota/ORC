@@ -143,7 +143,7 @@ For stories tagged with `frontend`, `ui`, `component`, `page`, or `layout`:
 
 ### Step 10: Interaction Requirements Validation (Frontend Stories Only)
 
-For frontend stories, validate against `contracts/interaction-requirements.schema.json`:
+For frontend stories, validate against `.claude-plugin/contracts/interaction-requirements.schema.json`:
 
 1. **Buttons** - Verify all states: hover, active, focus, loading, disabled
 2. **Cards** - If clickable, verify hover and click feedback
@@ -154,7 +154,7 @@ For frontend stories, validate against `contracts/interaction-requirements.schem
 
 ### Step 11: Design System Compliance (Frontend Stories Only)
 
-Validate against `contracts/design-system.schema.json`:
+Validate against `.claude-plugin/contracts/design-system.schema.json`:
 
 1. **Spacing** - No arbitrary values, uses design system scale
 2. **Typography** - Font sizes from scale, weights from scale

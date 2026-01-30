@@ -278,7 +278,7 @@ All agent communication uses typed JSON contracts:
 
 ### Schema Files
 ```
-contracts/
+.claude-plugin/contracts/
 ├── _definitions.schema.json      # Shared definitions
 ├── codebase-profile.schema.json  # Pre-flight analysis output
 ├── epic.schema.json

@@ -216,7 +216,7 @@ Spawn specialists for deep analysis when needed:
 
 ```json
 {
-  "$ref": "contracts/codebase-profile.schema.json"
+  "$ref": ".claude-plugin/contracts/codebase-profile.schema.json"
 }
 ```
 

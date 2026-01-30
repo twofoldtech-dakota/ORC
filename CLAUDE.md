@@ -31,18 +31,19 @@ ORC is a multi-agent orchestration system for autonomous software development. I
 
 ```
 .claude-plugin/    # Claude Code marketplace plugin package
+  marketplace.json # Marketplace catalog
   plugin.json      # Plugin manifest
   skills/orc/      # Skill definition (/orc commands)
   agents/          # Flattened agent definitions (19 files)
   commands/        # Command definitions with frontmatter (13 files)
   hooks/           # Lifecycle hooks (hooks.json)
-contracts/         # JSON schemas for data contracts
-patterns/          # Reusable implementation patterns
-  frontend/        # Frontend-specific patterns
-    _references/   # Linear, Vercel, Stripe, Remotion patterns
-    components/    # Button, card, form patterns
-    interactions/  # Hover, transitions, animations
-docs/              # Documentation
+  contracts/       # JSON schemas for data contracts
+  patterns/        # Reusable implementation patterns
+    frontend/      # Frontend-specific patterns
+      _references/ # Linear, Vercel, Stripe, Remotion patterns
+      components/  # Button, card, form patterns
+      interactions/# Hover, transitions, animations
+  docs/            # Documentation
 .orc/              # Runtime state (created during execution)
   design/          # Design research & innovation assessments
 ```
@@ -92,7 +93,7 @@ Blocks generic patterns like:
 
 ## Contracts
 
-Key schemas in `contracts/`:
+Key schemas in `.claude-plugin/contracts/`:
 - `story.schema.json` - Story definition with acceptance criteria
 - `design-system.schema.json` - Design system constraints
 - `interaction-requirements.schema.json` - Required interaction states
@@ -117,7 +118,7 @@ Frontend implementations should match quality of:
 6. Document innovation techniques
 
 ### Extending Patterns
-Add new patterns to `patterns/frontend/`:
+Add new patterns to `.claude-plugin/patterns/frontend/`:
 - Components: `components/{category}/{pattern-name}.md`
 - Interactions: `interactions/{pattern-name}.md`
 - References: `_references/{source}-patterns.md`
