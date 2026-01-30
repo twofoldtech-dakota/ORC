@@ -4,13 +4,13 @@ argument-hint: "[<epic-id>]"
 allowed-tools: [Read, Write, Edit, Glob, Grep, Bash, Task]
 ---
 
-# /orc run Command
+# /orc:run Command
 
 ## Usage
 
 ```
-/orc run                # Execute all approved epics
-/orc run <epic-id>      # Execute specific epic
+/orc:run                # Execute all approved epics
+/orc:run <epic-id>      # Execute specific epic
 ```
 
 ## Description
@@ -125,7 +125,7 @@ Starting execution of 2 epics...
   ├─ Patterns learned: 5 new, 3 updated
   └─ Total time: 4m 32s
 
-Run /orc show deviations to review pending deviations
+Run /orc:show deviations to review pending deviations
 ```
 
 ### Partial Completion Output
@@ -142,8 +142,8 @@ Run /orc show deviations to review pending deviations
   │   └─ E2-F3-S2: Depends on E2-F3-S1
   └─ Deviations: 3 (requires review: 2)
 
-Run /orc retry E2-F2-S3 to retry blocked story
-Run /orc show deviations to review pending deviations
+Run /orc:retry E2-F2-S3 to retry blocked story
+Run /orc:show deviations to review pending deviations
 ```
 
 ## State Updates
@@ -171,7 +171,7 @@ Feature E1-F1 with 4 stories:
 
 | Error | Response |
 |-------|----------|
-| No approved epics | "No approved epics. Run /orc approve first." |
+| No approved epics | "No approved epics. Run /orc:approve first." |
 | Invalid epic ID | "Epic '<id>' not found or not approved." |
 | All stories blocked | "All remaining stories are blocked. Review blockers." |
-| State corruption | "State file corrupted. Run /orc resume to recover." |
+| State corruption | "State file corrupted. Run /orc:resume to recover." |

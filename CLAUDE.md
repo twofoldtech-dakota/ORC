@@ -35,7 +35,7 @@ ORC is a multi-agent orchestration system for autonomous software development. I
 plugins/orc/           # ORC plugin package
   .claude-plugin/      # Plugin manifest
     plugin.json
-  skills/orc/          # Skill definition (/orc commands)
+  skills/orc/          # Skill definition (/orc: commands)
   agents/              # Agent definitions (19 files)
   commands/            # Command definitions (13 files)
   hooks/               # Lifecycle hooks (hooks.json)

@@ -4,12 +4,12 @@ argument-hint: "<goal>"
 allowed-tools: [Read, Write, Glob, Grep, Bash, Task]
 ---
 
-# /orc plan Command
+# /orc:plan Command
 
 ## Usage
 
 ```
-/orc plan <goal>
+/orc:plan <goal>
 ```
 
 ## Description
@@ -58,9 +58,9 @@ Epics (<count>):
 Total: <total features> features, <total stories> stories
 Estimated patterns matched: <count>
 
-Run /orc show for full details
-Run /orc approve to proceed
-Run /orc show E1 for epic details
+Run /orc:show for full details
+Run /orc:approve to proceed
+Run /orc:show E1 for epic details
 ```
 
 ## Append Dialog
@@ -102,14 +102,14 @@ Creates if not exists:
 
 | Error | Response |
 |-------|----------|
-| Empty goal | "Please provide a goal. Usage: /orc plan <goal>" |
+| Empty goal | "Please provide a goal. Usage: /orc:plan <goal>" |
 | Planner timeout | "Planning took too long. Try a smaller goal." |
 | Invalid learnings | "Warning: Could not load learnings, proceeding without patterns" |
 
 ## Example
 
 ```
-> /orc plan "Build REST API with JWT authentication and user management"
+> /orc:plan "Build REST API with JWT authentication and user management"
 
 🔍 Analyzing Codebase... ✓
 
@@ -134,14 +134,14 @@ Total: 5 features, 15 stories
 Estimated patterns matched: 6
 Codebase alignment: 94%
 
-Run /orc show for full details
-Run /orc approve to proceed
+Run /orc:show for full details
+Run /orc:approve to proceed
 ```
 
 ### With Cached Profile
 
 ```
-> /orc plan "Add email notifications"
+> /orc:plan "Add email notifications"
 
 🔍 Codebase Profile ✓ (cached, 2 hours ago)
 
@@ -155,5 +155,5 @@ Epics (1):
 Total: 2 features, 5 stories
 Codebase alignment: 96%
 
-Run /orc approve to proceed
+Run /orc:approve to proceed
 ```

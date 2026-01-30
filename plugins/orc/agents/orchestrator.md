@@ -45,7 +45,7 @@ The Orchestrator is the central coordination agent responsible for state managem
 4. Transition to PLAN phase
 
 ### Phase: PLAN
-1. Receive user goal via `/orc plan <goal>`
+1. Receive user goal via `/orc:plan <goal>`
 2. Load codebase profile (run ANALYZE phase if needed)
 3. Spawn Planner agent with goal and codebase profile
 4. Receive structured plan from Planner
@@ -161,7 +161,7 @@ Before accepting any agent output:
 | Schema validation failure | Return error to agent for retry |
 | Story implementation failure | Trigger auto-fix loop |
 | Persistent failure | Mark blocked, continue others |
-| User interrupt (`/orc stop`) | Save checkpoint, halt gracefully |
+| User interrupt (`/orc:stop`) | Save checkpoint, halt gracefully |
 
 ## Auto-Fix Loop
 

@@ -4,12 +4,12 @@ argument-hint: ""
 allowed-tools: [Read, Write]
 ---
 
-# /orc stop Command
+# /orc:stop Command
 
 ## Usage
 
 ```
-/orc stop
+/orc:stop
 ```
 
 ## Description
@@ -44,8 +44,8 @@ Progress saved:
   ├─ Checkpoint: E2-F1-S3-stop.json
   └─ Phase: execute (paused)
 
-Run /orc resume to continue from here
-Run /orc status to see current state
+Run /orc:resume to continue from here
+Run /orc:status to see current state
 ```
 
 ## State Updates

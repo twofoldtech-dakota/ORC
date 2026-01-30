@@ -4,12 +4,12 @@ argument-hint: "[--all]"
 allowed-tools: [Read, Write, Bash]
 ---
 
-# /orc clear Command
+# /orc:clear Command
 
 ## Usage
 
 ```
-/orc clear
+/orc:clear
 ```
 
 ## Description
@@ -62,7 +62,7 @@ Preserved:
   - Learnings: 23 patterns
   - Embeddings: 45 vectors
 
-Run /orc plan <goal> to start a new session.
+Run /orc:plan <goal> to start a new session.
 ```
 
 ## Output (Cancelled)
@@ -83,7 +83,7 @@ Clear cancelled. No changes made.
 ### Clear Everything
 
 ```
-/orc clear --all
+/orc:clear --all
 ```
 
 ```
@@ -106,5 +106,5 @@ Type 'DELETE ALL' to confirm:
 | Error | Response |
 |-------|----------|
 | No state exists | "Nothing to clear. No active ORC session." |
-| In progress | "Cannot clear during execution. Run /orc stop first." |
+| In progress | "Cannot clear during execution. Run /orc:stop first." |
 | Permission denied | "Cannot delete .orc directory. Check permissions." |

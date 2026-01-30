@@ -4,12 +4,12 @@ argument-hint: "[--force] [--focus <areas>]"
 allowed-tools: [Read, Glob, Grep, Bash]
 ---
 
-# /orc analyze Command
+# /orc:analyze Command
 
 ## Usage
 
 ```
-/orc analyze [options]
+/orc:analyze [options]
 ```
 
 ## Options
@@ -136,9 +136,9 @@ Confidence: 92%
 Project: typescript (express, prisma, react)
 Organization: feature-based
 
-Use /orc analyze --force to refresh
+Use /orc:analyze --force to refresh
 
-Run /orc plan <goal> to create a plan
+Run /orc:plan <goal> to create a plan
 ```
 
 ## Stale Profile
@@ -211,7 +211,7 @@ Creates/updates if not exists:
 
 ### Basic Analysis
 ```
-> /orc analyze
+> /orc:analyze
 
 🔍 Analyzing Codebase...
 [full output as shown above]
@@ -219,7 +219,7 @@ Creates/updates if not exists:
 
 ### Force Refresh
 ```
-> /orc analyze --force
+> /orc:analyze --force
 
 🔍 Re-analyzing Codebase (forced refresh)...
 [full output]
@@ -227,7 +227,7 @@ Creates/updates if not exists:
 
 ### Focused Analysis
 ```
-> /orc analyze --focus security,patterns
+> /orc:analyze --focus security,patterns
 
 🔍 Analyzing Codebase (focus: security, patterns)...
 
@@ -248,7 +248,7 @@ Creates/updates if not exists:
 
 ### Quiet Mode
 ```
-> /orc analyze --quiet
+> /orc:analyze --quiet
 
 ✅ Analysis complete (247 files, 92% confidence)
 ⚠️  1 warning: Mixed naming conventions detected
@@ -256,10 +256,10 @@ Creates/updates if not exists:
 
 ## Integration with Planning
 
-When running `/orc plan`, the analyzer phase executes automatically:
+When running `/orc:plan`, the analyzer phase executes automatically:
 
 ```
-> /orc plan "Add user management API"
+> /orc:plan "Add user management API"
 
 🔍 Analyzing Codebase... ✓ (cached, 92% confidence)
 

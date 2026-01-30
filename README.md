@@ -69,14 +69,14 @@ Or use interactive discovery:
 ### Verify Setup
 
 ```bash
-/orc status
+/orc:status
 ```
 
 Expected output:
 ```
 📊 ORC Status
 No active session.
-Run /orc plan <goal> to start.
+Run /orc:plan <goal> to start.
 ```
 
 ### Updating & Uninstalling
@@ -104,7 +104,7 @@ cd your-project
 claude
 
 # Plan and execute a feature
-> /orc plan "Add user authentication with JWT tokens"
+> /orc:plan "Add user authentication with JWT tokens"
 ```
 
 ORC will:
@@ -118,7 +118,7 @@ ORC will:
 ### Example Session
 
 ```
-You: /orc plan "Build a REST API with user management"
+You: /orc:plan "Build a REST API with user management"
 
 ORC: 🔍 Analyzing Codebase... ✓
      Project: typescript (express, prisma)
@@ -139,13 +139,13 @@ ORC: 🔍 Analyzing Codebase... ✓
      Total: 5 features, 15 stories
      Codebase alignment: 94%
 
-     Run /orc approve to proceed
+     Run /orc:approve to proceed
 
-You: /orc approve
+You: /orc:approve
 
-ORC: ✓ Plan approved. Run /orc run to execute.
+ORC: ✓ Plan approved. Run /orc:run to execute.
 
-You: /orc run
+You: /orc:run
 
 ORC: 🚀 Starting execution...
 
@@ -170,19 +170,19 @@ ORC: 🚀 Starting execution...
 
 | Command | Description | Example |
 |---------|-------------|---------|
-| `/orc analyze` | Profile codebase conventions and patterns | `/orc analyze --focus security` |
-| `/orc plan <goal>` | Create Epic → Feature → Story hierarchy | `/orc plan "Add payments"` |
-| `/orc show` | Display plan summary | `/orc show E1` |
-| `/orc approve` | Approve plan for execution | `/orc approve E1` |
-| `/orc run` | Execute approved epics | `/orc run E1` |
-| `/orc next` | Execute next epic only | `/orc next` |
-| `/orc stop` | Gracefully pause execution | `/orc stop` |
-| `/orc resume` | Continue from checkpoint | `/orc resume` |
-| `/orc retry <id>` | Retry a blocked story | `/orc retry E1-F2-S3` |
-| `/orc patterns` | Show learned patterns | `/orc patterns auth` |
-| `/orc learn` | Force pattern extraction | `/orc learn` |
-| `/orc status` | Show current state | `/orc status` |
-| `/orc clear` | Reset plan and state | `/orc clear` |
+| `/orc:analyze` | Profile codebase conventions and patterns | `/orc:analyze --focus security` |
+| `/orc:plan <goal>` | Create Epic → Feature → Story hierarchy | `/orc:plan "Add payments"` |
+| `/orc:show` | Display plan summary | `/orc:show E1` |
+| `/orc:approve` | Approve plan for execution | `/orc:approve E1` |
+| `/orc:run` | Execute approved epics | `/orc:run E1` |
+| `/orc:next` | Execute next epic only | `/orc:next` |
+| `/orc:stop` | Gracefully pause execution | `/orc:stop` |
+| `/orc:resume` | Continue from checkpoint | `/orc:resume` |
+| `/orc:retry <id>` | Retry a blocked story | `/orc:retry E1-F2-S3` |
+| `/orc:patterns` | Show learned patterns | `/orc:patterns auth` |
+| `/orc:learn` | Force pattern extraction | `/orc:learn` |
+| `/orc:status` | Show current state | `/orc:status` |
+| `/orc:clear` | Reset plan and state | `/orc:clear` |
 
 ---
 

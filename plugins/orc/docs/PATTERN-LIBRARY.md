@@ -25,9 +25,9 @@ When a story is created, ORC automatically:
 ### Manual Reference
 View patterns with:
 ```
-/orc patterns                  # All patterns
-/orc patterns auth             # By category
-/orc patterns search jwt       # Search
+/orc:patterns                  # All patterns
+/orc:patterns auth             # By category
+/orc:patterns search jwt       # Search
 ```
 
 ## Pattern Structure
