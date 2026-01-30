@@ -11,7 +11,7 @@
 **One prompt. Nineteen agents. Production-ready code.**
 
 ```bash
-claude plugins add twofoldtech-dakota/ORC
+/plugin marketplace add twofoldtech-dakota/ORC
 ```
 
 [Installation](#-installation) • [Quick Start](#-quick-start) • [Commands](#-commands) • [Architecture](#-architecture) • [Documentation](#-documentation)
@@ -51,24 +51,25 @@ claude --version
 
 ### Install from Marketplace
 
+Start Claude Code and run these commands:
+
 ```bash
-# Install ORC from Claude Code marketplace
-claude plugins add twofoldtech-dakota/ORC
+# Add the ORC marketplace
+/plugin marketplace add twofoldtech-dakota/ORC
 
-# Verify installation
-claude plugins list
+# Install the plugin
+/plugin install orc@ORC
 ```
 
-You should see:
-```
-orc (v1.0.0) - Multi-Agent Orchestration System
+Or use interactive discovery:
+```bash
+/plugin discover
 ```
 
 ### Verify Setup
 
 ```bash
-claude
-> /orc status
+/orc status
 ```
 
 Expected output:
@@ -81,11 +82,11 @@ Run /orc plan <goal> to start.
 ### Updating & Uninstalling
 
 ```bash
-# Update to latest version
-claude plugins update orc
+# Update the marketplace
+/plugin marketplace update ORC
 
 # Uninstall
-claude plugins remove orc
+/plugin uninstall orc
 ```
 
 ---
